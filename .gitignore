@@ -1,3 +1,10 @@
+*.out
+*.log
+*.aux
+*.gz
+*.DS_Store
+*.pdf
+
 # Object files
 *.o
 *.ko

@@ -1,0 +1,105 @@
+\documentclass[12pt]{third-rep}
+
+%% Any characters from a % to the end of line are comments.
+
+%% The third-rep class and this starter kit were written by 
+%% Graham Gough <graham@cs.man.ac.uk>
+%% If you have any comments or questions regarding this document,
+%% please post them to the local newsgroup man.cs.tex.
+
+%% This skeleton report is organised as a master file called
+%% report.tex which then includes files for individual parts including
+%% abstract.tex, chapter1.tex, chapter2.tex, chapter3.tex and
+%% appendix1.tex.  
+
+%% The third-rep style is a locally created style based on the
+%% standard LaTeX report style. If you really want to have a look at
+%% it, its source can be found in
+%% /usr/local/share/texmf/tex/latex/mancs/third-rep.cls
+%%
+%% More information about LaTeX in general and the local setup in
+%% particular can be found on the web at 
+%% http://csis.cs.manchester.ac.uk/software/contrib/latex
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% This is an example of how you load extra packages.
+%% Some packages are already loaded in the third-rep class
+
+\usepackage{url} % typeset URL's sensibly
+
+\usepackage{pslatex} % Use Postscript fonts
+
+%% The best way to latex just one chapter is to uncomment lines such as
+%% the next:
+%\includeonly{chapter1}
+
+%% This defines the title (the \\ forces a line break)
+\title{CSE221 Project}
+%% and author
+\author{Zhenchao Gan}
+%% and the year of the report
+\reportyear{2015}
+
+%% The following line sets up the use of PostScript fonts rather
+%% than the standard bitmapped fonts.
+\usepackage{pslatex}
+
+%% Uncomment the following line if you want to change the name of the
+%% Bibliography to References
+%\renewcommand{\bibname}{References}
+
+\usepackage{listings}
+
+%% End of preamble, the actual document starts here
+%%
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+
+\title{
+		\vspace{-0.5in} 	
+		\usefont{OT1}{bch}{b}{n}
+		\normalfont \normalsize \textsc{University of California, San Diego \\
+								Department of Computer Science and Engineering } \\ [25pt]
+		\horrule{0.5pt} \\[0.4cm]
+		\huge CSE 221 Project Report\\
+		\horrule{2pt} \\[0.5cm]
+}
+\author{
+		\normalfont 						\normalsize
+        				Zhenchao Gan\\[-3pt]		\normalsize
+				\{zhgan\} @eng.ucsd.edu \\ \\
+       		 \today
+}
+\date{}
+
+
+
+\begin{document}
+
+%% This actually creates the title and abstract pages
+%\dotitleandabstract
+\maketitle
+
+\pagebreak
+
+%% Generate contents etc
+\tableofcontents
+
+%% These include the actual text
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+
+\bibliography{refs}             % this causes the references to be
+                                % listed
+
+\bibliographystyle{alpha}       % this determines the style in which
+                                % the references are printed, other
+                                % possible values are plain and abbrv
+%% Appendices start here
+\appendix
+\include{appendix1}
+\end{document}

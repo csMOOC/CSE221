@@ -1,0 +1,79 @@
+\chapter[Machine Description]{Machine Description}
+
+\section{Processor}
+
+I get this information through system profiler and command 
+\begin{verbatim}
+sudo sysctl -a | grep cache
+\end{verbatim}
+
+\begin{itemize}
+\item Model : Intel Core i7
+\item Cycle time : 2.3 GHz
+\item L1 i-Cache : 32 KB
+\item L1 d-Cache : 32KB
+\item L2 Cache (per Core) : 256 KB
+\item L3 Cache : 6 MB
+\end{itemize}
+
+\section{Memory}
+I get this information by system profiler and run command
+\begin{verbatim}
+pagesize
+\end{verbatim}
+
+\begin{itemize}
+\item Memory Bus Speed : 1600 MHz
+\item RAM Size : 8 GB
+\item Page Size : 4 KB
+\end{itemize}
+
+\section{I/O Bus}
+\begin{verbatim}
+sudo sysctl -a | grep busfrequency
+\end{verbatim}
+
+\begin{itemize}
+\item Bus Frequency : 100 MHZ
+\end{itemize}
+
+
+\section{Disk}
+I get this information from system profiler and simply measure IO.
+
+\begin{verbatim}
+ time dd if=/dev/zero bs=1024k of=tstfile count=1024
+ dd if=tstfile bs=1024k of=/dev/null count=1024
+\end{verbatim}
+
+\begin{itemize}
+\item Model : APPLE SSD SD256E
+\item Capacity : 251 GB
+\item RPM : 7200
+\item Controller Cache Size : 2 MB
+\item File System : Journaled HFS+
+\item Write Speed : 380 MB/s
+\item Read Speed : 380 MB/s
+\end{itemize}
+
+\section{Network Card}
+I get this information from system profiler.
+
+\begin{itemize}
+\item Card Type : AirPort Extreme
+\item Network Card Speed : 450 Mbps
+\end{itemize}
+
+\section{Operating Systems}
+I get this information from system profiler.
+
+\begin{itemize}
+\item OS : OS X, Version 10.9.5
+\item Kern.ostype : Darwin
+\item Kern.osrelease : 13.4.0
+\end{itemize}
+
+% Local Variables: 
+% mode: latex
+% TeX-master: "report"
+% End: 

@@ -1,0 +1,36 @@
+\chapter{CPU, Scheduling, and OS Services}
+
+\section{Measurement overhead}
+In this part, we measure the overhead of reading time(read processor cycle counter) and the overhead of using a loop to measure many iterations of an operation. We will use these data to make other experiments more accurate by removing the overhead.
+
+\paragraph{Methodology}
+According to the hint, we googled rdtsc instruction and find useful helper functions rdtsc()\cite{rdtsc}, written in inline assembly form that return processor cycle count. 
+
+In order to record the overhead of reading time, we call rdtsc() twice and subtract them. To measure the overhead of using a loop, we apply this method
+\lstinputlisting[language=C]{hello.c}
+We run it many times, and get the overhead by (end - start) / loops.
+
+\paragraph{Predictions}
+As for reading time, I guess the overhead of hardware is 8 cycles which I get from the inline assembly code. For the software layer, I guess it is 9 cycles to perform read, binary operation, write. So total 17 cycles for reading time; 
+
+As for iterations of an operation, I guess hardware takes 3 cycles to do branch and increment and software takes 1 or 2 cycles as overhead, so it is about 5 cycles for iterations.
+
+\paragraph{Results}
+We present our measure results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation              & Hardware  & Software  & Overall  & Measured   \\
+\hline
+Reading time(cycles) & 8 & 9 & 17 & 19  \\
+Using a loop (cycles)           & 3 & 2 & 5 & 5 \\
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+My prediction is pretty successful, very close to the measure value. Because we adopted low-overhead mechanism to measure operations and these operations are visible to use, we could follow and predict all the instructions they perform. So our prediction and methodology could get this result. 
+
+% Local Variables: 
+% mode: latex
+% TeX-master: "report"
+% End: 

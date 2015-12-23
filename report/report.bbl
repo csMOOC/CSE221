@@ -1,0 +1,48 @@
+\begin{thebibliography}{GMS94}
+
+\bibitem[BT88]{boyle}
+R.~D. Boyle and R.~C. Thomas.
+\newblock {\em Computer Vision - A First Course}.
+\newblock Blackwell Scientific Publications, 1988.
+
+\bibitem[DD87]{occam}
+D.Pountain and D.May.
+\newblock {\em A tutorial introduction to occam programming}.
+\newblock Blackwell Scientific Publications, 1987.
+
+\bibitem[Dyk94]{rd-only}
+William Dyke.
+\newblock The nutter's guide to {\LaTeX}.
+\newblock {\em Read Only}, (7), May 1994.
+
+\bibitem[GMS94]{companion}
+Michel Goosens, Frank Mittelbach, and Alexander Samarin.
+\newblock {\em The {\LaTeX} Companion}.
+\newblock Addison-Wesley, 1994.
+
+\bibitem[kaz05]{rdtsc}
+kazutomo.
+\newblock {\em http://www.mcs.anl.gov/\~kazutomo/rdtsc.h}.
+\newblock 2005.
+
+\bibitem[KD93]{kopka-old}
+Helmut Kopka and Patrick~W. Daly.
+\newblock {\em A guide to {\LaTeX}}.
+\newblock Addison-Wesley, 1993.
+
+\bibitem[KD95]{kopka}
+Helmut Kopka and Patrick~W. Daly.
+\newblock {\em A guide to {\LaTeXe}}.
+\newblock Addison-Wesley, 2nd edition, 1995.
+
+\bibitem[Lam94]{lamport}
+Leslie Lamport.
+\newblock {\em {\LaTeX} -- A document preparation system}.
+\newblock Addison-Wesley, 2nd edition, 1994.
+
+\bibitem[Tea12]{url-cite}
+{\LaTeX}~Team.
+\newblock {URL}s in {BibTeX} bibliographies.
+\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=citeURL}, 2012.
+
+\end{thebibliography}

@@ -1,0 +1,129 @@
+\chapter{Introduction}
+\label{cha:intro}
+
+\section{How to read this document}
+This document attempts to do two things
+\begin{itemize}
+\item Provide a starting point from which you can construct your
+  report.
+\item Explain how one or two useful \LaTeX\ tricks work.
+\end{itemize}
+This means that you actually need to read it in two ways
+\begin{itemize}
+\item Read a printed, or previewed version to see \emph{what} can be done.
+\item Read the source to see \emph{how} it's done.
+\end{itemize}
+If you have any comments on this document, please post them to the QandA site
+ \texttt{qanda.cs.man.ac.uk}.
+
+\section{Aim}
+\label{sec:aim}
+
+The aim of the project is to create a wonderful gismo.
+
+A blank line is used to separate paragraphs. The chapters, sections
+and subsections are numbered and added to the table of contents
+automatically.
+
+\section{Driving Latex}
+
+\LaTeX\ is not a WYSIWYG system. You first prepare source files,
+\textsf{report.tex} etc., similar to the ones here, using your
+favourite text editor.
+
+The UNIX commands you need to drive \LaTeX\ are:
+\begin{enumerate}
+\item \texttt{latex.} Output from \texttt{latex} can be previewed on
+  the screen with \texttt{xdvi} or \texttt{gsprev} (under X), and printed on the laserprinter using  \texttt{dvips}.
+  \texttt{latex} produces \textsf{.dvi} files which are used by
+  \texttt{xdvi} or \texttt{gsprev} and \texttt{dvipr}.  To get all the
+  cross references and the table of contents correct you sometimes
+  need to run this command twice in succession.  Keep on re-running
+  until the advice to rerun at the end of the output goes away.
+
+  Many people now use \texttt{pdflatex} instead of \texttt{latex} to produce \texttt{pdf} files directly.
+  
+\item \texttt{xdvi} or \texttt{gsprev}. Previews the document on the
+  screen, again the parameter is \textsf{report}.
+  
+\item \texttt{dvips.} This is used to print on the laserprinter.  The
+  parameter is again \texttt{report}. 
+  
+\item \texttt{xfig}. Can be used to produce diagrams, see
+  section~\ref{sec:diagrams}.
+
+\end{enumerate}
+There are on-line manual pages for each of the commands described above.
+
+The set of files used to produce this document is in
+\textsf{/opt/info/doc/latex} (in one of the subdirectories
+\textsf{3rd-yr} or \textsf{MU-Thesis}).  They are also on the web at \url{http://csis.cs.manchester.ac.uk/software/contrib/latex/}. 
+
+You will find that for more detailed points you will need to refer to
+Lamport's `\LaTeX\ a document preparation system'~\cite{lamport}
+(Copies in the library  in Blackwell's).
+This example has been written using the most recent version of \LaTeX
+(LaTeX2e), which is described in the \emph{2nd edition} of Lamport's
+book. Buying a cheap copy of the 1st edition is probably not a good
+investment. An alternative to Lamport's book, which some people
+prefer, is `A guide to {\LaTeXe}' by Kopka and Daly~\cite{kopka}. The
+older `A guide to {\LaTeX}'~\cite{kopka-old} by the same authors is
+now obsolete. There is also pleanty of support material for \LaTeX\ on the web.
+
+\section{Software Environment}
+\subsection{Occam}
+
+Here is some more example text, showing various \LaTeX\ facilities
+you may need.  The project was mostly programmed in
+\textbf{Occam}~\cite{occam}.  (A citation has been created  here to an
+entry in the bibliography at the end of the report. See
+chapter~\ref{cha:bib} for more details on how to do this).
+
+Note the way of getting boldface, \textit{textit} is used for italic.
+\emph{emph} is used for emphasis and is the same as italic except when
+already in italic.  Note the cross reference to the bibliography.
+This is how you create a footnote: DMA\footnote{Direct Memory Access.
+  Footnotes can stretch over more than one line if you have a lot to
+  say, but be careful not to overdo them.}.
+
+Here is a reference to a figure. See figure~\ref{pipeline}.
+\begin{figure}[htbp]
+  \centering
+  \input{pipeline}
+  \caption{A Pipeline of processors
+    \label{pipeline}}           %  this label must appear after the
+                                %  \caption, and before the end of the
+                                %  figure
+\end{figure}
+The picture in this figure was created the hard way using the picture
+facility of \LaTeX. It is \emph{much} easier to use \texttt{xfig}, as
+described in section~\ref{sec:diagrams}.  Whatever its contents, a
+figure `floats' to a `suitable' point in the text and is never split
+across a page boundary. (\LaTeX's idea of what constitutes a suitable
+point may not coincide with yours)
+
+
+Now we have a verbatim environment; this is a useful way of including
+snippits of program, printed in a fixed width font exactly as typed:
+
+\begin{verbatim}
+{{{ An example of some folds
+...  This is some folded code
+  {{{ This is another fold
+  This is text within the fold that has now been
+  opened so that the text can be read.
+  }}}
+}}}
+\end{verbatim}
+
+% Everything below here is commented material which is used by the
+% emacs tex support system called auctex. If you're not an emacs user
+% you can safely ignore it. If you do use emacs you should take a look
+% at the local emacs or LaTeX WWW pages for more on emacs support for
+% LaTeX.
+
+% Local Variables:
+% mode: latex
+% TeX-master: "report"
+% End:
+
