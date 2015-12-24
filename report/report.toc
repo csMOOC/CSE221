@@ -1,32 +1,38 @@
-\contentsline {chapter}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {1.1}How to read this document}{2}
-\contentsline {section}{\numberline {1.2}Aim}{2}
-\contentsline {section}{\numberline {1.3}Driving Latex}{3}
-\contentsline {section}{\numberline {1.4}Software Environment}{4}
-\contentsline {subsection}{\numberline {1.4.1}Occam}{4}
-\contentsline {chapter}{\numberline {2}Machine Description}{5}
-\contentsline {section}{\numberline {2.1}Processor}{5}
-\contentsline {section}{\numberline {2.2}Memory}{5}
-\contentsline {section}{\numberline {2.3}I/O Bus}{6}
-\contentsline {section}{\numberline {2.4}Disk}{6}
-\contentsline {section}{\numberline {2.5}Network Card}{6}
-\contentsline {section}{\numberline {2.6}Operating Systems}{7}
-\contentsline {chapter}{\numberline {3}CPU, Scheduling, and OS Services}{8}
-\contentsline {section}{\numberline {3.1}Measurement overhead}{8}
-\contentsline {paragraph}{Methodology}{8}
-\contentsline {paragraph}{Predictions}{8}
-\contentsline {paragraph}{Results}{9}
-\contentsline {paragraph}{Discussion}{9}
-\contentsline {section}{\numberline {3.2}Procedure call overhead}{9}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {1.1}How to read this document}{3}
+\contentsline {section}{\numberline {1.2}Aim}{3}
+\contentsline {section}{\numberline {1.3}Driving Latex}{4}
+\contentsline {section}{\numberline {1.4}Software Environment}{5}
+\contentsline {subsection}{\numberline {1.4.1}Occam}{5}
+\contentsline {chapter}{\numberline {2}Machine Description}{6}
+\contentsline {section}{\numberline {2.1}Processor}{6}
+\contentsline {section}{\numberline {2.2}Memory}{6}
+\contentsline {section}{\numberline {2.3}I/O Bus}{7}
+\contentsline {section}{\numberline {2.4}Disk}{7}
+\contentsline {section}{\numberline {2.5}Network Card}{7}
+\contentsline {section}{\numberline {2.6}Operating Systems}{8}
+\contentsline {chapter}{\numberline {3}CPU, Scheduling, and OS Services}{9}
+\contentsline {section}{\numberline {3.1}Measurement overhead}{9}
 \contentsline {paragraph}{Methodology}{9}
 \contentsline {paragraph}{Predictions}{9}
 \contentsline {paragraph}{Results}{10}
 \contentsline {paragraph}{Discussion}{10}
-\contentsline {paragraph}{Question}{11}
-\contentsline {chapter}{\numberline {4}Making a bibliography}{12}
-\contentsline {chapter}{\numberline {}Bibliography}{13}
-\contentsline {chapter}{\numberline {A}Example of operation}{14}
-\contentsline {section}{\numberline {A.1}Example input and output}{14}
-\contentsline {subsection}{\numberline {A.1.1}Input}{14}
-\contentsline {subsection}{\numberline {A.1.2}Output}{14}
-\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{15}
+\contentsline {section}{\numberline {3.2}Procedure call overhead}{10}
+\contentsline {paragraph}{Methodology}{10}
+\contentsline {paragraph}{Predictions}{10}
+\contentsline {paragraph}{Results}{10}
+\contentsline {paragraph}{Discussion}{11}
+\contentsline {paragraph}{Question}{12}
+\contentsline {section}{\numberline {3.3}System call overhead}{12}
+\contentsline {paragraph}{Methodology}{12}
+\contentsline {paragraph}{Predictions}{12}
+\contentsline {paragraph}{Results}{12}
+\contentsline {paragraph}{Discussion}{13}
+\contentsline {paragraph}{Question}{13}
+\contentsline {chapter}{\numberline {4}Making a bibliography}{14}
+\contentsline {chapter}{\numberline {}Bibliography}{15}
+\contentsline {chapter}{\numberline {A}Example of operation}{16}
+\contentsline {section}{\numberline {A.1}Example input and output}{16}
+\contentsline {subsection}{\numberline {A.1.1}Input}{16}
+\contentsline {subsection}{\numberline {A.1.2}Output}{16}
+\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{17}

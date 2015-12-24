@@ -11,9 +11,9 @@ In order to record the overhead of reading time, we call rdtsc() twice and subtr
 We run it many times, and get the overhead by (end - start) / loops.
 
 \paragraph{Predictions}
-As for reading time, I guess the overhead of hardware is 8 cycles which I get from the inline assembly code. For the software layer, I guess it is 9 cycles to perform read, binary operation, write. So total 17 cycles for reading time; 
+As for reading time, I guess the overhead of software is 8 cycles which I get from the inline assembly code. For the hardware layer, I guess it is 9 cycles to perform read, binary operation, write. So total 17 cycles for reading time; 
 
-As for iterations of an operation, I guess hardware takes 3 cycles to do branch and increment and software takes 1 or 2 cycles as overhead, so it is about 5 cycles for iterations.
+As for iterations of an operation, I guess software takes 3 cycles to do branch and increment and hardware takes 1 or 2 cycles as overhead, so it is about 5 cycles for iterations.
 
 \paragraph{Results}
 We present our measure results.
@@ -22,8 +22,8 @@ We present our measure results.
 \begin{tabular}{l*{6}{c}r}
 Operation              & Hardware  & Software  & Overall  & Measured   \\
 \hline
-Reading time(cycles) & 8 & 9 & 17 & 19  \\
-Using a loop (cycles)           & 3 & 2 & 5 & 5 \\
+Reading time(cycles) & 9 & 8 & 17 & 19  \\
+Using a loop (cycles)           & 2 & 3 & 5 & 5 \\
 \end{tabular}
 \end{center}
 
@@ -34,12 +34,12 @@ My prediction is pretty successful, very close to the measure value. Because we 
 In this part, we measure the overhead of Procedure call. 
 
 \paragraph{Methodology}
-In order to get accurate result, we have to tell compiler not to inline the procedure call. So I use this attribute ((noinline)) to tell gcc not to inline procedure call and I turn off OPTIMIZE.
+In order to get accurate result, we have to tell compiler not to inline the procedure call. So We use this attribute ((noinline)) to tell gcc not to inline procedure call and I turn off OPTIMIZE.
 
-I did not process the arguments in procedure call. I iterate about 100000 times, I record the counter before the loop and record it again after the loop, then remove the iteration overhead.
+We did not process the arguments in procedure call. We iterate about 100000 times, I record the counter before the loop and record it again after the loop, then remove the iteration overhead.
 
 \paragraph{Predictions}
-We predicte when adding more arguments to procedure call, the cycle count should increase linearly. Because we should push each argument to the stack. Besides, procedure call will maintain stack pointers, and instruction like call and ret. When there are no arguments, the cycle should be about 6 cycles, 4 cycles for call, ret and maintain stack pointers and 2 cycles for software interference. When adding one more arguments, we assume hardware and software both add 1 cycles.
+We predicte when adding more arguments to procedure call, the cycle count should increase linearly. Because we should push each argument to the stack. Besides, procedure call will maintain stack pointers, and instruction like call and ret. When there are no arguments, the cycle should be about 6 cycles, 4 cycles for call, ret and maintain stack pointers and 2 cycles for hardware. When adding one more arguments, we assume hardware and software both add 1 cycles.
 
 
 \paragraph{Results}
@@ -49,14 +49,14 @@ We present our measure results(unit : cycle).
 \begin{tabular}{l*{6}{c}r}
 Args              & Hardware  & Software  & Overall  & Measured  & Remove overhead\\
 \hline
-0 args & 4 & 2 & 6 & 7.1 & 2.1 \\
-1 args & 5 & 3 & 8 & 7.3  & 2.3 \\
-2 args & 6 & 4 & 10 & 7.7 & 2.7 \\
-3 args & 7 & 5 & 12 & 8.6 & 3.6 \\
-4 args & 8 & 6 & 14 & 9.3 & 4.3\\
-5 args & 9 & 7 & 16 & 10.0 & 5.0\\
-6 args & 10 & 8 & 18 & 10.9 & 5.9\\
-7 args & 11 & 9 & 20 & 13.1 & 8.1\\
+0 args & 2 & 4 & 6 & 7.1 & 2.1 \\
+1 args & 3 & 5 & 8 & 7.3  & 2.3 \\
+2 args & 4 & 6 & 10 & 7.7 & 2.7 \\
+3 args & 5 & 7 & 12 & 8.6 & 3.6 \\
+4 args & 6 & 8 & 14 & 9.3 & 4.3\\
+5 args & 7 & 9 & 16 & 10.0 & 5.0\\
+6 args & 8 & 10 & 18 & 10.9 & 5.9\\
+7 args & 9 & 11 & 20 & 13.1 & 8.1\\
 \end{tabular}
 \end{center}
 
@@ -77,3 +77,31 @@ I have guessed that compiler may use registers to store parameter in the loop so
 With the increasing of iteration time, the average cycles decrease a lot. There may be some mechanism like cache in the hardware.
 
 \paragraph{Question} What is the increment overhead of an argument? The increment overhead is about 1 cycle per  argument, pushing parameters to stack.
+
+\section{System call overhead}
+In this part, we measure the overhead of System call. There are more than 100 systems in Mac OS and Linux like exit, fork, open and getpid. And the overhead varies a lot. For example, System call like fork will use more cycles than getpid. Because fork will creates a new process by duplicating the calling process which will use much more resources than getpid. So we aim to choose the one that use fewer CPU cycles. The minimal cost can be emulated by measuring the cost of getpid() or getppid().
+
+\paragraph{Methodology}
+Because in my operating system getpid() will cache the result, getppid() will not cache the result. So we decided to choose getppid() as our system call overhead measurement target.
+
+The method is similar to measure overhead of procedure call. We iterate about 100000 times, record the counter before the loop and record it again after the loop, then remove the iteration overhead.
+
+\paragraph{Predictions}
+As for hardware, it may take 10 cycles to read ppid. As for software, it is hard to estimate. I have implemented system call before. The operations include save current state to memory, trap into kernel, then kernel provide service and finally restore previous state. I measure it as 200 cycles.
+
+\paragraph{Results}
+We present our measure results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation              & Hardware  & Software  & Overall  & Measured & Remove Overhead  \\
+\hline
+getppid() (cycles) & 200 & 10 & 210 & 302 & 297  \\
+getpid() (cycles) & ~ & ~ & ~ & 9 & 4  \\
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+Our estimates were lower than the measured result. That is to say, the overhead of user and kernel mode switch is more than we imagine. So, cache some system call results may be a good choice. Because some stupid system call benchmark will repeatedly call getpid ().
+
+\paragraph{Question} How does it compare to the cost of a procedure call? The cost of a system call is much larger than that of a procedure call. Because a system call involves switch between user mode and kernel mode. Furthermore, kernel will provide service to the caller and sometimes will have I/O operations.
