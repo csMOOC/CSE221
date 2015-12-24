@@ -30,7 +30,50 @@ Using a loop (cycles)           & 3 & 2 & 5 & 5 \\
 \paragraph{Discussion}
 My prediction is pretty successful, very close to the measure value. Because we adopted low-overhead mechanism to measure operations and these operations are visible to use, we could follow and predict all the instructions they perform. So our prediction and methodology could get this result. 
 
-% Local Variables: 
-% mode: latex
-% TeX-master: "report"
-% End: 
+\section{Procedure call overhead}
+In this part, we measure the overhead of Procedure call. 
+
+\paragraph{Methodology}
+In order to get accurate result, we have to tell compiler not to inline the procedure call. So I use this attribute ((noinline)) to tell gcc not to inline procedure call and I turn off OPTIMIZE.
+
+I did not process the arguments in procedure call. I iterate about 100000 times, I record the counter before the loop and record it again after the loop, then remove the iteration overhead.
+
+\paragraph{Predictions}
+We predicte when adding more arguments to procedure call, the cycle count should increase linearly. Because we should push each argument to the stack. Besides, procedure call will maintain stack pointers, and instruction like call and ret. When there are no arguments, the cycle should be about 6 cycles, 4 cycles for call, ret and maintain stack pointers and 2 cycles for software interference. When adding one more arguments, we assume hardware and software both add 1 cycles.
+
+
+\paragraph{Results}
+We present our measure results(unit : cycle).
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Args              & Hardware  & Software  & Overall  & Measured  & Remove overhead\\
+\hline
+0 args & 4 & 2 & 6 & 7.1 & 2.1 \\
+1 args & 5 & 3 & 8 & 7.3  & 2.3 \\
+2 args & 6 & 4 & 10 & 7.7 & 2.7 \\
+3 args & 7 & 5 & 12 & 8.6 & 3.6 \\
+4 args & 8 & 6 & 14 & 9.3 & 4.3\\
+5 args & 9 & 7 & 16 & 10.0 & 5.0\\
+6 args & 10 & 8 & 18 & 10.9 & 5.9\\
+7 args & 11 & 9 & 20 & 13.1 & 8.1\\
+\end{tabular}
+\end{center}
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=5in]{./pics/pcall.jpg} 
+   \caption{procedure call overhead}
+   \label{fig:procedure call overhead}
+\end{figure}
+
+\paragraph{Discussion}
+The measurement statistics is a little strange. Like we have predicted, the overhead for a procedure call scales about linearly with the number of arguments passed in; However, the cycles procedure calls take are less than we have predicted. 
+
+So I tried another methodology. In a loop, first I record the counter, then do procedure call and record again. When calculating, I remove the overhead of counter reading time. But I still get similar results.
+
+I have guessed that compiler may use registers to store parameter in the loop so as to reduce many memory operations. So I look at assembly code but it is pretty regular stack operation.
+
+With the increasing of iteration time, the average cycles decrease a lot. There may be some mechanism like cache in the hardware.
+
+\paragraph{Question} What is the increment overhead of an argument? The increment overhead is about 1 cycle per  argument, pushing parameters to stack.

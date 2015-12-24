@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 	int loops = atoi(argv[1]);
     unsigned long long start, end;
     start = rdtsc();
-    volatile int i;
+    int i;
     for (i = 0; i < loops; ++i) {}
     end = rdtsc();
 	unsigned long long total = end - start;
