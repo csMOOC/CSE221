@@ -104,4 +104,39 @@ getpid() (cycles) & ~ & ~ & ~ & 9 & 4  \\
 \paragraph{Discussion}
 Our estimates were lower than the measured result. That is to say, the overhead of user and kernel mode switch is more than we imagine. So, cache some system call results may be a good choice. Because some stupid system call benchmark will repeatedly call getpid ().
 
-\paragraph{Question} How does it compare to the cost of a procedure call? The cost of a system call is much larger than that of a procedure call. Because a system call involves switch between user mode and kernel mode. Furthermore, kernel will provide service to the caller and sometimes will have I/O operations.
+\paragraph{Question} How does it compare to the cost of a procedure call? The cost of a system call is much larger than that of a procedure call. Because a system call involves switch between user mode and kernel mode. Furthermore, kernel will provide service to the caller and sometimes will have I/O operations.
+
+\section{Task creation time}
+In this part, we measure task creation time, measure the time to create and run both a process and a kernel thread.
+
+\paragraph{Methodology}
+For process, we use fork() to create a new process. We iterate 500 times, under Mac OS, if we iterate 1000 times then it will report ERROR so we only iterate 500 times, each iteration we record counter before fork() and after fork() and then get the average time, later remove the iteration overhead.
+
+Things are quiet similar for kernel thread. We use pthread to create a task. Whenever we create a new thread, in the thread function we use pthread\_exit() to kill thread immediately, which will make measurement accurate.
+
+\paragraph{Predictions}
+It is difficult to predict accurately. What I am quiet sure is that creating a thread kernel is much more cheaper than creating a process. Because threads share many resources like file descriptors.
+
+For process, I measure the hardware cycles are 200, and the software is 2000.
+For thread, I measure the hardware cycles are 50, and the software is 200.
+
+\paragraph{Results}
+We present our measure results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation              & Hardware  & Software  & Overall  & Measured   \\
+\hline
+process & 2000 & 200 & 2200 & 181932  \\
+kernel thread    & 200 & 50 & 250 & 16509 \\
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+First, the cost of creating a process is much more expensive than a thread as the data indicated. Because thread is a light process that share many resources so it use fewer CPU cycles.
+
+But I am shocked by the cycles to create a process and thread. I tried gcc -O3 optimisation but did not get any improvement.
+
+\paragraph{Question} How do they compare?
+The cost of creating a new process is expensive. Each process has its own address space. Even with COW, there are still many memory copy operation and other overheads. Compared with process, kernel thread can share process resources and can be used in many situations. For example, in a web server, there are many clients and it is impossible to respond to so many clients using process creation model.
+

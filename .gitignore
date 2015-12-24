@@ -4,6 +4,7 @@
 *.gz
 *.DS_Store
 *.pdf
+*.toc
 
 # Object files
 *.o

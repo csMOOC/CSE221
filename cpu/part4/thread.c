@@ -2,7 +2,10 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include <sys/types.h>
+#include <pthread.h>
 #include <unistd.h>
+
+void *func(void *tid) {pthread_exit(NULL);}
 
 int main(int argc, char **argv) {
     
@@ -13,30 +16,24 @@ int main(int argc, char **argv) {
     
     int loops = atoi(argv[1]);
     unsigned long long total = 0;
-    unsigned long long start, end;
     
     int i = 0;
-    
+
     for (; i < loops; i++) {
+        unsigned long long start, end;
         
+        long p;
+        pthread_t thread;
         start = rdtsc();
-        pid_t pid = fork();
+        pthread_create(&thread, NULL, func, (void *)p);
         end = rdtsc();
+        total += (end - start);
         
-        if (pid == -1) {
-            printf("fork failed!\n");
-            exit(-1);
-        }
-        
-        if (pid == 0) {
-            return 0;
-        } else {
-            unsigned long long diff = end - start;
-            total += diff;
-        }
+        pthread_join(thread, NULL);
     }
 
-    printf("fork task creation : %llu cycles; Total : %llu \n", total/loops, total);
+
+    printf("pthread task creation : %llu cycles; Total : %llu \n", total/loops, total);
 
     return 0;
 }

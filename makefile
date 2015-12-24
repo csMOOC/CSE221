@@ -15,6 +15,7 @@ cpu3 :
 
 cpu4 : 
 	gcc -Iinclude -o cpu4.1.out cpu/part4/process.c;mv cpu4.1.out build
+	gcc -Iinclude -o cpu4.2.out cpu/part4/thread.c;mv cpu4.2.out build
 
 clean :
 	rm ./build/*
