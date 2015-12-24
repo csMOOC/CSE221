@@ -1,7 +1,7 @@
 all: cpu
 .PHONY:all
 
-cpu : cpu1 cpu2 cpu3
+cpu : cpu1 cpu2 cpu3 cpu4
 
 cpu1 : 
 	gcc -Iinclude -o cpu1.1.out cpu/part1/cpuread.c;mv cpu1.1.out build
@@ -13,6 +13,8 @@ cpu2 :
 cpu3 : 
 	gcc -Iinclude -o cpu3.1.out cpu/part3/system_call.c;mv cpu3.1.out build
 
+cpu4 : 
+	gcc -Iinclude -o cpu4.1.out cpu/part4/process.c;mv cpu4.1.out build
 
 clean :
 	rm ./build/*
