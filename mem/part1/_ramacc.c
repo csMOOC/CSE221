@@ -14,6 +14,7 @@ int main(int argc, char* argv[]) {
 
 	unsigned long long loops = atoi(argv[1]);
     unsigned long long start, end;
+    loops = 1000000;
     
     rdtsc();
     rdtsc();
@@ -21,9 +22,9 @@ int main(int argc, char* argv[]) {
 
     int stride = 1;
     
-    for(;stride <= 8;stride++) {
+    for(;stride <= 12;stride++) {
         
-        int arraysizestride = 9;
+        int arraysizestride = 13;
         
         for(;arraysizestride <= 24;arraysizestride++) {
         
@@ -32,23 +33,27 @@ int main(int argc, char* argv[]) {
             
             int i = 0;
             unsigned long long total = 0;
+            char *array = (char*)malloc(sizeof(char)*arraysize);
+            memset(array, 0, arraysize);
+            int pos = 0;
+            
+            unsigned long long start,end,diff;
+            
+            start = rdtsc();
             
             for(;i < loops;i++) {
-                int *array = (int*)malloc(sizeof(int)*arraysize);
-                memset(array, 0, sizeof(int)*arraysize);
-                int j = 0;
-                unsigned long long start, end ,diff;
-                start = rdtsc();
-                for(;j < arraysize;j += footlength) {
-                    int k = array[j];
-                }
-                end = rdtsc();
-                diff = end - start;
-                total += diff;
-                free(array);
+                
+                int k = array[pos];
+                
+                pos = (pos+footlength)%arraysize;
+                
             }
+            end = rdtsc();
             
-            printf ("RAM access time and average time(stride %d arraysize %d): %llu  %llu\n", stride, arraysizestride,total, total/(loops * (arraysize/footlength)));
+            total += (end - start);
+            free(array);
+            
+            printf ("RAM access time and average time(stride %d arraysize %d): %llu  %llu\n", stride, arraysizestride,total, total/loops);
         
         }
         

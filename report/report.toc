@@ -39,10 +39,15 @@
 \contentsline {paragraph}{Results}{13}
 \contentsline {paragraph}{Discussion}{13}
 \contentsline {paragraph}{Question}{13}
-\contentsline {chapter}{\numberline {4}Making a bibliography}{14}
-\contentsline {chapter}{\numberline {}Bibliography}{15}
-\contentsline {chapter}{\numberline {A}Example of operation}{16}
-\contentsline {section}{\numberline {A.1}Example input and output}{16}
-\contentsline {subsection}{\numberline {A.1.1}Input}{16}
-\contentsline {subsection}{\numberline {A.1.2}Output}{16}
-\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{17}
+\contentsline {chapter}{\numberline {4}Memory}{14}
+\contentsline {section}{\numberline {4.1}RAM access time}{14}
+\contentsline {paragraph}{Methodology}{14}
+\contentsline {paragraph}{Predictions}{14}
+\contentsline {paragraph}{Results}{14}
+\contentsline {paragraph}{Discussion}{15}
+\contentsline {chapter}{\numberline {}Bibliography}{17}
+\contentsline {chapter}{\numberline {A}Example of operation}{18}
+\contentsline {section}{\numberline {A.1}Example input and output}{18}
+\contentsline {subsection}{\numberline {A.1.1}Input}{18}
+\contentsline {subsection}{\numberline {A.1.2}Output}{18}
+\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{19}

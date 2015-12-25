@@ -1,0 +1,36 @@
+\chapter{Making a bibliography}
+\label{cha:bib}
+Whenever you wish to refer to books or articles relevant to your report
+you should use a citation such as \cite{lamport}. You can also force
+entries to appear in the bibliography without  a citation appearing in
+the document, by using \verb=\nocite=.  
+
+%% This nocite produces 2 entries in the bibliography
+\nocite{boyle,rd-only} 
+
+Each document cited must have an entry in a \textsf{.bib} file. For this
+document we have only one, called \textsf{refs.bib}. These files are
+listed in the \verb=\bibliography= command at the end of
+\textsf{report.tex}. Note that the \textsf{.bib} files can (and often
+do) contain many more entries than are actually cited in a partcular
+document; the only ones that appear in the bibliography are those that
+have been referenced using \verb=\cite= or \verb=\nocite=.
+
+In order to generate the appropriate reference entries, you will need
+to run \texttt{bibtex} after \texttt{latex} has been run, using the
+command \texttt{bibtex report}. This will generate a file
+\textsf{report.bbl}, which contains the bibliography entries. Once
+that file is there, you do not need to run \texttt{bibtex} again
+unless you add new citations, but you will probably have to run
+\texttt{latex} twice after running \texttt{bibtex} the first time.
+
+The \TeX{} FAQ (\cite{url-cite}) gives tips on how to cite URLs.
+
+The file \textsf{refs.bib} provides an example of what can be done
+with Bib\TeX. You can find much more information in any book on
+\LaTeX, for example \cite{lamport,companion,kopka}
+
+% Local Variables: 
+% mode: latex
+% TeX-master: "report"
+% End: 
