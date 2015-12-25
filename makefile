@@ -1,7 +1,9 @@
-all: cpu
+all: cpu mem
 .PHONY:all
 
 cpu : cpu1 cpu2 cpu3 cpu4 cpu5
+
+mem : mem1
 
 cpu1 : 
 	gcc -Iinclude -o cpu1.1.out cpu/part1/cpuread.c;mv cpu1.1.out build
@@ -20,6 +22,9 @@ cpu4 :
 cpu5 : 
 	gcc -Iinclude -o cpu5.1.out cpu/part5/process_cs.c;mv cpu5.1.out build
 	gcc -Iinclude -o cpu5.2.out cpu/part5/thread_cs.c;mv cpu5.2.out build
+
+mem1 : 
+	gcc -Iinclude -o mem1.1.out mem/part1/ramacc.c;mv mem1.1.out build
 
 clean :
 	rm ./build/*
