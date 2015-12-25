@@ -1,42 +1,48 @@
-\contentsline {chapter}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {1.1}Goal}{2}
-\contentsline {section}{\numberline {1.2}Environment}{2}
-\contentsline {section}{\numberline {1.3}Time spent}{2}
-\contentsline {chapter}{\numberline {2}Machine Description}{3}
-\contentsline {section}{\numberline {2.1}Processor}{3}
-\contentsline {section}{\numberline {2.2}Memory}{3}
-\contentsline {section}{\numberline {2.3}I/O Bus}{4}
-\contentsline {section}{\numberline {2.4}Disk}{4}
-\contentsline {section}{\numberline {2.5}Network Card}{4}
-\contentsline {section}{\numberline {2.6}Operating Systems}{5}
-\contentsline {chapter}{\numberline {3}CPU, Scheduling, and OS Services}{6}
-\contentsline {section}{\numberline {3.1}Measurement overhead}{6}
-\contentsline {paragraph}{Methodology}{6}
-\contentsline {paragraph}{Predictions}{6}
-\contentsline {paragraph}{Results}{7}
-\contentsline {paragraph}{Discussion}{7}
-\contentsline {section}{\numberline {3.2}Procedure call overhead}{7}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {1.1}Goal}{3}
+\contentsline {section}{\numberline {1.2}Environment}{3}
+\contentsline {section}{\numberline {1.3}Time spent}{3}
+\contentsline {chapter}{\numberline {2}Machine Description}{4}
+\contentsline {section}{\numberline {2.1}Processor}{4}
+\contentsline {section}{\numberline {2.2}Memory}{4}
+\contentsline {section}{\numberline {2.3}I/O Bus}{5}
+\contentsline {section}{\numberline {2.4}Disk}{5}
+\contentsline {section}{\numberline {2.5}Network Card}{5}
+\contentsline {section}{\numberline {2.6}Operating Systems}{6}
+\contentsline {chapter}{\numberline {3}CPU, Scheduling, and OS Services}{7}
+\contentsline {section}{\numberline {3.1}Measurement overhead}{7}
 \contentsline {paragraph}{Methodology}{7}
 \contentsline {paragraph}{Predictions}{7}
-\contentsline {paragraph}{Results}{7}
+\contentsline {paragraph}{Results}{8}
 \contentsline {paragraph}{Discussion}{8}
-\contentsline {paragraph}{Question}{9}
-\contentsline {section}{\numberline {3.3}System call overhead}{9}
-\contentsline {paragraph}{Methodology}{9}
-\contentsline {paragraph}{Predictions}{9}
-\contentsline {paragraph}{Results}{9}
-\contentsline {paragraph}{Discussion}{10}
+\contentsline {section}{\numberline {3.2}Procedure call overhead}{8}
+\contentsline {paragraph}{Methodology}{8}
+\contentsline {paragraph}{Predictions}{8}
+\contentsline {paragraph}{Results}{8}
+\contentsline {paragraph}{Discussion}{9}
 \contentsline {paragraph}{Question}{10}
-\contentsline {section}{\numberline {3.4}Task creation time}{10}
+\contentsline {section}{\numberline {3.3}System call overhead}{10}
 \contentsline {paragraph}{Methodology}{10}
 \contentsline {paragraph}{Predictions}{10}
 \contentsline {paragraph}{Results}{10}
 \contentsline {paragraph}{Discussion}{11}
 \contentsline {paragraph}{Question}{11}
-\contentsline {chapter}{\numberline {4}Making a bibliography}{12}
-\contentsline {chapter}{\numberline {}Bibliography}{13}
-\contentsline {chapter}{\numberline {A}Example of operation}{14}
-\contentsline {section}{\numberline {A.1}Example input and output}{14}
-\contentsline {subsection}{\numberline {A.1.1}Input}{14}
-\contentsline {subsection}{\numberline {A.1.2}Output}{14}
-\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{15}
+\contentsline {section}{\numberline {3.4}Task creation time}{11}
+\contentsline {paragraph}{Methodology}{11}
+\contentsline {paragraph}{Predictions}{11}
+\contentsline {paragraph}{Results}{11}
+\contentsline {paragraph}{Discussion}{12}
+\contentsline {paragraph}{Question}{12}
+\contentsline {section}{\numberline {3.5}Context switch time}{12}
+\contentsline {paragraph}{Methodology}{12}
+\contentsline {paragraph}{Predictions}{13}
+\contentsline {paragraph}{Results}{13}
+\contentsline {paragraph}{Discussion}{13}
+\contentsline {paragraph}{Question}{13}
+\contentsline {chapter}{\numberline {4}Making a bibliography}{14}
+\contentsline {chapter}{\numberline {}Bibliography}{15}
+\contentsline {chapter}{\numberline {A}Example of operation}{16}
+\contentsline {section}{\numberline {A.1}Example input and output}{16}
+\contentsline {subsection}{\numberline {A.1.1}Input}{16}
+\contentsline {subsection}{\numberline {A.1.2}Output}{16}
+\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{17}

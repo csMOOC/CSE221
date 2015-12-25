@@ -94,7 +94,7 @@ We present our measure results.
 
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Operation              & Hardware  & Software  & Overall  & Measured & Remove Overhead  \\
+System call              & Hardware  & Software  & Overall  & Measured & Remove Overhead  \\
 \hline
 getppid() (cycles) & 200 & 10 & 210 & 302 & 297  \\
 getpid() (cycles) & ~ & ~ & ~ & 9 & 4  \\
@@ -125,7 +125,7 @@ We present our measure results.
 
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Operation              & Hardware  & Software  & Overall  & Measured   \\
+Task creation              & Hardware  & Software  & Overall  & Measured   \\
 \hline
 process & 2000 & 200 & 2200 & 181932  \\
 kernel thread    & 200 & 50 & 250 & 16509 \\
@@ -140,3 +140,41 @@ But I am shocked by the cycles to create a process and thread. I tried gcc -O3 o
 \paragraph{Question} How do they compare?
 The cost of creating a new process is expensive. Each process has its own address space. Even with COW, there are still many memory copy operation and other overheads. Compared with process, kernel thread can share process resources and can be used in many situations. For example, in a web server, there are many clients and it is impossible to respond to so many clients using process creation model.
 
+\section{Context switch time}
+In this part, we measure the time to context switch from one process to another, and from one kernel thread to another.
+
+\paragraph{Methodology}
+As the hint indicated, blocking pipe will force context switch and we tried, it did do context switch so we use blocked pipe to perform context switch.
+
+For process, we first record the time before read pipe, because read will block so it will switch to child process. Then we record the end time and write end time to pipe. So when parent process resume, parent process can collect the end time and do the calculation; Besides, we use wait() to reap resources.
+
+For thread, we perform similar operations. After pthread\_create(), we record start time and use read to block pipe. At thread function we record the end time and write this value to pipe. So main thread could collect data and print the statistics.
+
+At the end of each iteration, we all reap the resource in order to get accurate results. When there are many resources that are not reaped, our machine may run slower than usual.
+
+\paragraph{Predictions}
+What I am sure is that process context switch is much more expensive than thread context switch.
+
+For process context switch, I think hardware cycles are 20000 cycles and software are 5000 cycles.
+
+For thread context switch, I think hard cycles are 2000 cycles and software are 500 cycles.
+
+\paragraph{Results}
+We present our measure results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Context switch              & Hardware  & Software  & Overall  & Measured   \\
+\hline
+process & 20000 & 5000 & 25000 & 133221  \\
+kernel thread    & 2000 & 500 & 2500 & 9752 \\
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+We predict well on the scale of process context switch and thread context switch. A process contains much more information than a kernel thread, so it is expensive of course just like previous experiments on creation time overhead.
+
+The cost of process context switch is as expensive as fork a new process and so as a kernel thread. So context switch is very important to go deep into. How to reduce the overhead of context switch is of great significance.
+
+\paragraph{Question} How do they compare?
+In my experiment, kernel threads are approximately 14 times faster in performing a context switch than processes. So in some applications like web server, threads are much more cheaper than processes and recommended.

@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
         } else {
             unsigned long long diff = end - start;
             total += diff;
+            wait(NULL);
         }
     }
 
