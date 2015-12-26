@@ -87,3 +87,31 @@ WRITE & 1200MB/s & 1520MB/s \\
 
 \paragraph{Discussion}
 The actual statistics is very close to our measured results, because we choose well-designed methodology that not only eliminate the effects of cache line prefetching but also use loop unrolling to reduce iteration overhead. That's why we choose 32MB array. Because an array of this size can not be put in cache totally and we can access array to make cache miss.
+
+\section{Page fault service time}
+In this part, we report the time for faulting an entire page from disk.
+
+\paragraph{Methodology}
+According to the hint, we find that mmap is one useful mechanism. Because file contents are not read from disk initially and do not use physical RAM at all. The actual reads from disk are performed in a "lazy" manner, after a specific location is accessed. Before accessing the content, we record time, after accessing we record again then we can get the page fault service time.
+
+\paragraph{Predictions}
+Because my page size is 4 KB, every page fault will loading 4 KB data from disk to memory. SSD read/write speed is fast, so I predict the hardware cycles are 4192 * 2 = 8384 cycles and software cycles are 100.
+
+\paragraph{Results}
+We present our measure results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation   & Hardware  & Software  & Overall  & Measured   \\
+\hline
+Service page fault(cycles) & 8384 & 100 & 8484 & 9898  \\
+
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+Our estimation is pretty close to the measured result. When a page fault occurs, the program trap into kernel, then kernel load data from disk to memory. 
+
+\paragraph{Question} Dividing by the size of a page, how does it compare to the latency of accessing a byte from main memory?
+
+The page size in our system is 4 KB, so it is approximately 2 cycles per byte of data transfered, compared to about 50 cycles per byte from main memory. May be this is the power of SSD.

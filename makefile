@@ -3,7 +3,7 @@ all: cpu mem
 
 cpu : cpu1 cpu2 cpu3 cpu4 cpu5
 
-mem : mem1
+mem : mem1 mem2 mem3
 
 cpu1 : 
 	gcc -Iinclude -o cpu1.1.out cpu/part1/cpuread.c;mv cpu1.1.out build
@@ -26,8 +26,11 @@ cpu5 :
 mem1 : 
 	gcc -Iinclude -o mem1.1.out mem/part1/ramacc.c;mv mem1.1.out build
 
-mem1 : 
+mem2 : 
 	gcc -Iinclude -o mem2.1.out mem/part2/rambandwith.c;mv mem2.1.out build
 
+mem3 : 
+	gcc -Iinclude -o mem3.1.out mem/part3/pagefault.c;mv mem3.1.out build
+
 clean :
-	rm ./build/*
+	rm ./build/*.out
