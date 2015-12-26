@@ -1,7 +1,7 @@
 \chapter{Memory}
 
 \section{RAM access time}
-In this part, Report latency for individual integer accesses to main memory and the L1 and L2 caches.
+In this part, we report latency for individual integer accesses to main memory and the L1 and L2 caches.
 
 \paragraph{Methodology}
 To test memory access latency, I first followed the procedure described in the lmbench paper, testing different stride lengths over varying sizes of arrays. But it is something like sequential access, I wrote code and got the test data, found that it is hard to distinguish different level cache.
@@ -60,3 +60,30 @@ We can also see the transitions from L2-cache to L3-cache. In the picture, from 
 But I can't see the transition from L1-cache to L2-cache in the picture.
 
 We can also see that within cache, the RAM access time cycles are very small compared to that of main memory access.
+
+\section{RAM bandwidth}
+In this part, we report bandwidth for both reading and writing.
+
+\paragraph{Methodology}
+First, we create an array of size 32 MB that is bigger than L3-cache(6MB) and can be put into memory. In order to reduce the effects of cache line prefetching, we access array as follow : $0 -> HALF\_SIZE -> 1 -> HALF\_SIZE+1 -> ... -> ...$. So we can make sure that each access will cache miss and get from main memory.
+
+To reduce the overhead, we apply loop unrolling. Compared with code that did not apply loop unrolling, the bandwidth increased  a lot.
+
+\paragraph{Predictions}
+The machine information tells us that the memory speed is about 1600MB/s. In view of some factors, we predict the speed is 1200 MB/s.
+
+\paragraph{Results}
+We present our measure results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation             & Predicted cycle & Measured cycle  \\
+\hline
+READ & 1200MB/s & 1226MB/s \\
+WRITE & 1200MB/s & 1520MB/s \\
+
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+The actual statistics is very close to our measured results, because we choose well-designed methodology that not only eliminate the effects of cache line prefetching but also use loop unrolling to reduce iteration overhead. That's why we choose 32MB array. Because an array of this size can not be put in cache totally and we can access array to make cache miss.

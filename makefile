@@ -26,5 +26,8 @@ cpu5 :
 mem1 : 
 	gcc -Iinclude -o mem1.1.out mem/part1/ramacc.c;mv mem1.1.out build
 
+mem1 : 
+	gcc -Iinclude -o mem2.1.out mem/part2/rambandwith.c;mv mem2.1.out build
+
 clean :
 	rm ./build/*

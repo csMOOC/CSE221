@@ -45,6 +45,11 @@
 \contentsline {paragraph}{Predictions}{14}
 \contentsline {paragraph}{Results}{14}
 \contentsline {paragraph}{Discussion}{15}
+\contentsline {section}{\numberline {4.2}RAM bandwidth}{16}
+\contentsline {paragraph}{Methodology}{16}
+\contentsline {paragraph}{Predictions}{16}
+\contentsline {paragraph}{Results}{16}
+\contentsline {paragraph}{Discussion}{16}
 \contentsline {chapter}{\numberline {}Bibliography}{17}
 \contentsline {chapter}{\numberline {A}Example of operation}{18}
 \contentsline {section}{\numberline {A.1}Example input and output}{18}
