@@ -1,9 +1,11 @@
-all: cpu mem
+all: cpu mem fs
 .PHONY:all
 
 cpu : cpu1 cpu2 cpu3 cpu4 cpu5
 
 mem : mem1 mem2 mem3
+
+fs : fs1
 
 cpu1 : 
 	gcc -Iinclude -o cpu1.1.out cpu/part1/cpuread.c;mv cpu1.1.out build
@@ -31,6 +33,9 @@ mem2 :
 
 mem3 : 
 	gcc -Iinclude -o mem3.1.out mem/part3/pagefault.c;mv mem3.1.out build
+
+fs1 : 
+	gcc -Iinclude -o fs1.1.out fs/part1/file_cache.c;mv fs1.1.out build
 
 clean :
 	rm ./build/*.out
