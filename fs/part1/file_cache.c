@@ -42,12 +42,12 @@ unsigned long long getReadTime(char* filename, size_t size) {
 
 int main(int argc, char** argv) {
     char* filename;
-    if (argc == 2) {
-        filename = argv[1];
-    } else {
+    if (argc != 2) {
         printf("usage : ./program filename");
         exit(0);
     }
+    
+    filename = argv[1];
     
     int fd = open(filename, O_RDONLY);
     size_t size = getFileSize(fd);

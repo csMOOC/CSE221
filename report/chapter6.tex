@@ -42,3 +42,71 @@ File Size             &  Cycles/MB\\
 
 \paragraph{Discussion}
 The graph shows that the file cache size is between 3300MB and 3500MB. Before this experiment, I did not realize that OS will use so many spaces for file cache. This optimisation speed up file reading time.
+
+\section{File read time}
+In this part, we report for both sequential and random access as a function of file size.
+
+\paragraph{Methodology}
+First, in order not to measure cached data, we want to set O\_DIRECT flag when opening a file, which could minimize cache effects of the I/O from this file. But Mac OS does not support O\_DIRECT. So we looked through Apple document and find we can set F\_NOCACHE in fcntl().
+
+Besides, we use read() for sequential access, because read() will modify file pointer that fit the situation; However for random access it is bad to use read(), because we have to use lseek() to move the file pointer to target position which will significantly cost time. So we use pread() instead of read() for random access. Pread() works just like read() but reads from the specified position in the file without modifying the file pointer.
+
+We provide several files with different sizes and iterate 100 times, then calculate  the average per-block read time.
+
+\paragraph{Predictions}
+Because we are using SSD, the speed of sequential and random access may be very similar to each other. Considering that we did not use file cache, we will fetch each block of data from disk. So I predict the speed is 19000 cycles per blocks, plus 1000 cycles for software.
+
+\paragraph{Results}
+We present our measure results. The base file is 4KB, and we define log(4KB) = 2.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=5in]{./pics/42.jpg} 
+   \caption{read cycles per block}
+   \label{fig:read cycles per block}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+File Size             &  hardware & software & overall & Measured \\
+\hline
+4KB & 19000 & 1000 & 20000 & 401481\\ 
+8KB & 19000 & 1000 & 20000 & 475677\\ 
+16KB & 19000 & 1000 & 20000 & 501356\\
+32KB & 19000 & 1000 & 20000 & 670260\\
+64KB & 19000 & 1000 & 20000 & 489722\\
+128KB & 19000 & 1000 & 20000 & 397495\\
+256KB & 19000 & 1000 & 20000 & 293712\\
+512KB & 19000 & 1000 & 20000 & 300106\\
+1024KB & 19000 & 1000 & 20000 & 281106\\
+2048KB & 19000 & 1000 & 20000 & 287629\\
+
+\end{tabular}
+\end{center}
+
+Above is the result of sequential access. We can see on average it takes about 300000-600000 cycles to read each file block, far exceeding than we predicted previously.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+File Size             &  hardware & software & overall & Measured \\
+\hline
+4KB & 19000 & 1000 & 20000 & 420067\\ 
+8KB & 19000 & 1000 & 20000 & 393597\\ 
+16KB & 19000 & 1000 & 20000 & 502322\\
+32KB & 19000 & 1000 & 20000 & 405538\\
+64KB & 19000 & 1000 & 20000 & 425528\\
+128KB & 19000 & 1000 & 20000 & 426442\\
+256KB & 19000 & 1000 & 20000 & 504624\\
+512KB & 19000 & 1000 & 20000 & 492654\\
+1024KB & 19000 & 1000 & 20000 & 430804\\
+2048KB & 19000 & 1000 & 20000 & 426658\\
+
+\end{tabular}
+\end{center}
+
+Above is the result of random access. We can see on average it takes about 400000-500000 cycles to read each file block, far exceeding than we predicted previously.
+
+\paragraph{Discussion}
+As we have predicted, random access is almost as fast as sequential access due to SSD. But we predict cycles wrongly. Without file cache, it would be very expensive to do file reading. Each block would cost almost 300000-600000 cycles on average.
+
+Then I remove F\_NOCACHE flag to do file reading, finding that it only takes about 1000-2000 cycles per block, which is so cheap compared with no cache. It speeds up over 100 times. So, in most situations open file with cache is good for program performance.
