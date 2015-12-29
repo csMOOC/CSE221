@@ -5,7 +5,7 @@ cpu : cpu1 cpu2 cpu3 cpu4 cpu5
 
 mem : mem1 mem2 mem3
 
-fs : fs1 fs2
+fs : fs1 fs2 fs4
 
 cpu1 : 
 	gcc -Iinclude -o cpu1.1.out cpu/part1/cpuread.c;mv cpu1.1.out build
@@ -40,6 +40,9 @@ fs1 :
 fs2 : 
 	gcc -Iinclude -o fs2.1.out fs/part2/seq_read.c;mv fs2.1.out build
 	gcc -Iinclude -o fs2.2.out fs/part2/ran_read.c;mv fs2.2.out build
+
+fs4 : 
+	gcc -Iinclude -o fs4.1.out fs/part4/contension.c;mv fs4.1.out build
 
 clean :
 	rm ./build/*.out

@@ -110,3 +110,54 @@ Above is the result of random access. We can see on average it takes about 40000
 As we have predicted, random access is almost as fast as sequential access due to SSD. But we predict cycles wrongly. Without file cache, it would be very expensive to do file reading. Each block would cost almost 300000-600000 cycles on average.
 
 Then I remove F\_NOCACHE flag to do file reading, finding that it only takes about 1000-2000 cycles per block, which is so cheap compared with no cache. It speeds up over 100 times. So, in most situations open file with cache is good for program performance.
+
+\section{Contention}
+Report the average time to read one file system block of data as a function of the number of processes simultaneously performing the same operation on different files on the same disk (and not in the file buffer cache).
+
+\paragraph{Methodology}
+As previous experiment, we continue using F\_NOCACHE flag to disable file cache. In this experiment, we create several processes. Each process read different file which is of the same size : 1MB. And we iterate 100 times to get average data. 
+
+\paragraph{Predictions}
+We are sure that the more process number, the more cycles it spend on reading file. We think each read will result in a context switch to another process. We present predictions with results in the following table. We use 1MB file, including 256 blocks. Based on previous experiment on sequential reading 1MB file, when there is only 1 process, the reading cycles are 281106. When increasing a process, we add about 15000 cycles for hardware and 1000 for software.
+
+\paragraph{Results}
+We present our measure results(unit : cycles). 
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+nprocesses             &  hardware & software & overall & Measured\\
+\hline
+1 & 280000 & 1000 & 281000 & 229003 \\
+2 & 295000 & 2000 & 297000 & 253880 \\
+3 & 310000 & 3000 & 313000 & 209028 \\
+4 & 325000 & 4000 & 329000 & 240578 \\
+5 & 340000 & 5000 & 345000 & 432147 \\
+6 & 355000 & 6000 & 371000 & 438801 \\
+7 & 370000 &7000 & 377000 & 459831 \\
+8 & 385000 & 8000 & 393000 & 415745 \\
+9 & 400000 & 9000 & 409000 & 474147 \\
+10 & 415000 & 10000 & 425000 & 491004\\
+11 & 430000 & 11000 & 441000 & 515341 \\
+12 & 445000 & 12000 & 457000 & 515871 \\
+13 & 460000 & 13000 & 473000 & 536629\\
+14 & 475000 & 14000 & 489000 & 568728\\
+15 & 490000 & 15000 & 505000 & 590147\\
+
+\end{tabular}
+\end{center}
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=4.5in]{./pics/44.jpg} 
+   \caption{average cycles per process}
+   \label{fig:average cycles per process}
+\end{figure}
+
+\paragraph{Discussion}
+We can see that generally, with the increasing of process, the average cycle increase too. 
+
+Our prediction is so close to the measured results. I am very surprised, I had thought that the measured results may exceed millions of cycles due to context switch between processes.
+
+When I set the file cache flag, the cycles reduce to about 6000-8000 per block.
+
+If we use HDD, each read will take many seek time. Now we use SSD, the cost is very small. That's the big difference between SSD and HDD.
