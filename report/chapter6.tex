@@ -111,8 +111,75 @@ As we have predicted, random access is almost as fast as sequential access due t
 
 Then I remove F\_NOCACHE flag to do file reading, finding that it only takes about 1000-2000 cycles per block, which is so cheap compared with no cache. It speeds up over 100 times. So, in most situations open file with cache is good for program performance.
 
+\section{Remote file read time}
+In this section, we conduct the previous experiment for a remote file system.
+
+\paragraph{Methodology}
+We use the same method described in previous section. The only difference is that we now read a remote file. Note, page size in that machine is 8KB.
+
+\paragraph{Predictions}
+The remote machine use SSD, and the network bandwidth is 1000Mb/s, these two machines are in same LAN. So the effect of network may not seem so obvious.
+
+Based on the results of previous section, we add 20\% overhead in hardware and software. Don't forget that the pagesize now is 8KB. And we think sequential access time is close to random access time. 
+
+\paragraph{Results}
+
+We present our measure results. The base file is 4KB, and we define log(4KB) = 2.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=4in]{./pics/43.jpg} 
+   \caption{remote read cycles per block}
+   \label{fig:remote read cycles per block}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+File Size             &  hardware & software & overall & Measured \\
+\hline
+8KB & 800000 & 10000 & 810000 & 1060023\\ 
+16KB & 800000 & 10000 & 810000 & 1037613\\ 
+32KB & 800000 & 10000 & 810000 & 1155908\\
+64KB & 800000 & 10000 & 810000 & 1127454\\
+128KB & 800000 & 10000 & 810000 & 1134455\\
+256KB & 800000 & 10000 & 810000 & 1105819\\
+512KB & 800000 & 10000 & 810000 & 1085479\\
+1024KB & 800000 & 10000 & 810000 & 1089600\\
+2048KB & 800000 & 10000 & 810000 & 1074542\\
+
+\end{tabular}
+\end{center}
+
+Above is the result of sequential access.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+File Size             &  hardware & software & overall & Measured \\
+\hline
+8KB & 800000 & 10000 & 810000 & 1043427\\ 
+16KB & 800000 & 10000 & 810000 & 1065662\\ 
+32KB & 800000 & 10000 & 810000 & 1058558\\
+64KB & 800000 & 10000 & 810000 & 1073499\\
+128KB & 800000 & 10000 & 810000 & 1073262\\
+256KB & 800000 & 10000 & 810000 & 1077349\\
+512KB & 800000 & 10000 & 810000 & 1074041\\
+1024KB & 800000 & 10000 & 810000 & 1074543\\
+2048KB & 800000 & 10000 & 810000 & 1044684\\
+
+\end{tabular}
+\end{center}
+
+Above is the result of random access.
+
+\paragraph{Discussion}
+Due to previous experience, this time our estimation is very close to the measured results. And it seems that the overhead is not so much compared with file cache. If one machine is in China, another one is in US, maybe network is very expensive compared to other factors.
+
+SSDs also make random access as fast as sequential access.
+
+\paragraph{Question} What is the "network penalty" of accessing files over the network?  As we have predicted, compared with file cache, the network overhead is about 20\%, around 200000 cycles.
+
 \section{Contention}
-Report the average time to read one file system block of data as a function of the number of processes simultaneously performing the same operation on different files on the same disk (and not in the file buffer cache).
+In this section, we report the average time to read one file system block of data as a function of the number of processes simultaneously performing the same operation on different files on the same disk (and not in the file buffer cache).
 
 \paragraph{Methodology}
 As previous experiment, we continue using F\_NOCACHE flag to disable file cache. In this experiment, we create several processes. Each process read different file which is of the same size : 1MB. And we iterate 100 times to get average data. 

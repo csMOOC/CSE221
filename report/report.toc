@@ -67,14 +67,20 @@
 \contentsline {paragraph}{Predictions}{20}
 \contentsline {paragraph}{Results}{20}
 \contentsline {paragraph}{Discussion}{22}
-\contentsline {section}{\numberline {5.3}Contention}{23}
+\contentsline {section}{\numberline {5.3}Remote file read time}{23}
 \contentsline {paragraph}{Methodology}{23}
 \contentsline {paragraph}{Predictions}{23}
 \contentsline {paragraph}{Results}{23}
 \contentsline {paragraph}{Discussion}{24}
-\contentsline {chapter}{\numberline {}Bibliography}{25}
-\contentsline {chapter}{\numberline {A}Example of operation}{26}
-\contentsline {section}{\numberline {A.1}Example input and output}{26}
-\contentsline {subsection}{\numberline {A.1.1}Input}{26}
-\contentsline {subsection}{\numberline {A.1.2}Output}{26}
-\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{27}
+\contentsline {paragraph}{Question}{24}
+\contentsline {section}{\numberline {5.4}Contention}{24}
+\contentsline {paragraph}{Methodology}{25}
+\contentsline {paragraph}{Predictions}{25}
+\contentsline {paragraph}{Results}{25}
+\contentsline {paragraph}{Discussion}{25}
+\contentsline {chapter}{\numberline {}Bibliography}{27}
+\contentsline {chapter}{\numberline {A}Example of operation}{28}
+\contentsline {section}{\numberline {A.1}Example input and output}{28}
+\contentsline {subsection}{\numberline {A.1.1}Input}{28}
+\contentsline {subsection}{\numberline {A.1.2}Output}{28}
+\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{29}
