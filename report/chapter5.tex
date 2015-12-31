@@ -1,0 +1,53 @@
+\chapter{Network}
+
+\section{Round trip time}
+In this part, we try to calculate the round trip time.
+
+\paragraph{Methodology}
+The method is very simple, it's just like an echo server. Client send one byte to server, when server received the message then send back the message, and client receive it. Before client send message, we record current cycle; After client receive message, we record again. We iterate this procedure for 1000 times and get the average.
+
+When iterating 1000 times and use the same opened connection. We did not use different connection, because it will add many TCP ACK overhead for connection. This experiment is only for RTT. The connection overhead will be measured in the following experiments.
+
+\paragraph{Predictions}
+Our predictions exclude the factor of building connection. So for loopback and remote interface, the biggest difference is send and receive data.
+
+For loopback interface. We measure the hardware cycles are 20000, software cycles are 5000.
+
+For remote interface. We measure the hardware cycles are 100000, software cycles are 10000.
+
+\paragraph{Results}
+We present our measured results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation       &  Hardware & Software & Overall & Measured\\
+\hline
+loopback & 20000 & 5000 & 25000 & 69882 \\
+remote & 100000 & 10000& 110000 & 627772 \\
+\end{tabular}
+\end{center}
+
+Following is the Ping results.
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation       &  RTT & Corresponding Cycles\\
+\hline
+loopback & 0.070ms & 161000 \\
+remote & 0.196ms &  450800 \\
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+The overhead of network communication is exceeding our predictions. Even the loopback interface is over 60000 cycles for only 1 byte transfer. \\
+
+
+What can you deduce about baseline network performance and the overhead of OS software?  \\
+In this experiment we only transfer 1 byte data. In the next experiment, we will go deep into the network performance and the overhead of OS software. Because bandwidth benchmark will reveal more about this.
+
+How close to ideal hardware performance do you achieve? \\ 
+It is far short of the ideal hardware performance because of the TCP/IP protocol.\\
+
+
+What are reasons why the TCP performance does not match ideal hardware performance?  \\
+It is expensive to build TCP reliable connection, much time on handshake, including ACK packages and SYN packages.
+
