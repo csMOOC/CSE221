@@ -1,41 +1,55 @@
-/* a client in the unix domain */
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/socket.h>
-#include <sys/un.h>
 #include <stdio.h>
-void error(const char *);
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include "rdtsc.h"
 
-int main(int argc, char *argv[])
-{
-   int sockfd, servlen,n;
-   struct sockaddr_un  serv_addr;
-   char buffer[82];
+int main(int argc , char *argv[])
+{      
+	if(argc != 3) {
+		perror("usage : ./client ip port");
+		return -1;
+	}
 
-   bzero((char *)&serv_addr,sizeof(serv_addr));
-   serv_addr.sun_family = AF_UNIX;
-   strcpy(serv_addr.sun_path, argv[1]);
-   servlen = strlen(serv_addr.sun_path) + 
-                 sizeof(serv_addr.sun_family);
-   if ((sockfd = socket(AF_UNIX, SOCK_STREAM,0)) < 0)
-       error("Creating socket");
-   if (connect(sockfd, (struct sockaddr *) 
-                         &serv_addr, servlen) < 0)
-       error("Connecting");
-   printf("Please enter your message: ");
-   bzero(buffer,82);
-   fgets(buffer,80,stdin);
-   write(sockfd,buffer,strlen(buffer));
-   n=read(sockfd,buffer,80);
-   printf("The return message was\n");
-   write(1,buffer,n);
-   close(sockfd);
-   return 0;
-}
+	int loops = 1000;
+	int port = atoi(argv[2]);
 
-void error(const char *msg)
-{
-    perror(msg);
-    exit(0);
+    struct sockaddr_in server;
+    server.sin_addr.s_addr =inet_addr(argv[1]);
+    server.sin_family = AF_INET;
+    server.sin_port = htons( port );
+    int sockfd;
+    
+    // Create socket
+    sockfd = socket(AF_INET , SOCK_STREAM , 0);
+    if (sockfd == -1) {
+        perror("Error: fails to create socket");
+		return -1;
+	}
+
+	if (connect(sockfd,(struct sockaddr *)&server,sizeof(server)) < 0) {
+		perror("ERROR connecting");
+		return -1;
+	}
+
+    // Computing round trip time
+    char msg = 'a';
+    unsigned long long start,end;
+	unsigned long long total = 0;
+	int j = 0;
+    for (; j < loops; ++j) {
+        start = rdtsc();
+        send(sockfd, &msg, 1, 0);
+        recv(sockfd, &msg, 1, 0);
+        end = rdtsc();
+		total += (end - start);
+    }
+
+    printf ("Round Trip Cycles are : %llu\n", total/loops);
+	printf("finished \n");
+    
+	return 0;
 }
