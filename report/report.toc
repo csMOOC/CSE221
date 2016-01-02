@@ -62,31 +62,36 @@
 \contentsline {paragraph}{Predictions}{18}
 \contentsline {paragraph}{Results}{18}
 \contentsline {paragraph}{Discussion}{19}
-\contentsline {chapter}{\numberline {6}File System}{20}
-\contentsline {section}{\numberline {6.1}Size of file cache}{20}
-\contentsline {paragraph}{Methodology}{20}
+\contentsline {section}{\numberline {5.2}Peak bandwidth}{19}
+\contentsline {paragraph}{Methodology}{19}
 \contentsline {paragraph}{Predictions}{20}
 \contentsline {paragraph}{Results}{20}
-\contentsline {paragraph}{Discussion}{21}
-\contentsline {section}{\numberline {6.2}File read time}{22}
-\contentsline {paragraph}{Methodology}{22}
-\contentsline {paragraph}{Predictions}{22}
-\contentsline {paragraph}{Results}{22}
-\contentsline {paragraph}{Discussion}{24}
-\contentsline {section}{\numberline {6.3}Remote file read time}{25}
-\contentsline {paragraph}{Methodology}{25}
-\contentsline {paragraph}{Predictions}{25}
-\contentsline {paragraph}{Results}{25}
-\contentsline {paragraph}{Discussion}{26}
-\contentsline {paragraph}{Question}{26}
-\contentsline {section}{\numberline {6.4}Contention}{27}
-\contentsline {paragraph}{Methodology}{27}
-\contentsline {paragraph}{Predictions}{27}
-\contentsline {paragraph}{Results}{27}
-\contentsline {paragraph}{Discussion}{28}
-\contentsline {chapter}{\numberline {}Bibliography}{29}
-\contentsline {chapter}{\numberline {A}Example of operation}{30}
-\contentsline {section}{\numberline {A.1}Example input and output}{30}
-\contentsline {subsection}{\numberline {A.1.1}Input}{30}
-\contentsline {subsection}{\numberline {A.1.2}Output}{30}
-\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{31}
+\contentsline {paragraph}{Discussion}{20}
+\contentsline {chapter}{\numberline {6}File System}{21}
+\contentsline {section}{\numberline {6.1}Size of file cache}{21}
+\contentsline {paragraph}{Methodology}{21}
+\contentsline {paragraph}{Predictions}{21}
+\contentsline {paragraph}{Results}{21}
+\contentsline {paragraph}{Discussion}{22}
+\contentsline {section}{\numberline {6.2}File read time}{23}
+\contentsline {paragraph}{Methodology}{23}
+\contentsline {paragraph}{Predictions}{23}
+\contentsline {paragraph}{Results}{23}
+\contentsline {paragraph}{Discussion}{25}
+\contentsline {section}{\numberline {6.3}Remote file read time}{26}
+\contentsline {paragraph}{Methodology}{26}
+\contentsline {paragraph}{Predictions}{26}
+\contentsline {paragraph}{Results}{26}
+\contentsline {paragraph}{Discussion}{27}
+\contentsline {paragraph}{Question}{27}
+\contentsline {section}{\numberline {6.4}Contention}{28}
+\contentsline {paragraph}{Methodology}{28}
+\contentsline {paragraph}{Predictions}{28}
+\contentsline {paragraph}{Results}{28}
+\contentsline {paragraph}{Discussion}{29}
+\contentsline {chapter}{\numberline {}Bibliography}{30}
+\contentsline {chapter}{\numberline {A}Example of operation}{31}
+\contentsline {section}{\numberline {A.1}Example input and output}{31}
+\contentsline {subsection}{\numberline {A.1.1}Input}{31}
+\contentsline {subsection}{\numberline {A.1.2}Output}{31}
+\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{32}

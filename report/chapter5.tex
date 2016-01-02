@@ -49,5 +49,40 @@ It is far short of the ideal hardware performance because of the TCP/IP protocol
 
 
 What are reasons why the TCP performance does not match ideal hardware performance?  \\
-It is expensive to build TCP reliable connection, much time on handshake, including ACK packages and SYN packages.
+It is expensive to establish TCP reliable connection, much time on handshake, including ACK packages and SYN packages.
 
+\section{Peak bandwidth}
+In this part, we try to explore peak bandwidth.
+
+\paragraph{Methodology}
+The code is very similar to the previous experiment.
+
+In this experiment, when we establish the connection, the server will send some data to the client and the client will receive this chunk of data. The size of data is a parameter. We use several sizes like 1000000 bytes, the result is pretty similar.
+
+Besides, we repeat our procedure more than 10 times and choose the maximum result as peak bandwidth.
+
+\paragraph{Predictions}
+According to the memory bandwidth provided by hardware information, we think the peak bandwidth of loopback interface is 1600MB/s. 
+
+Because the network bandwidth is 1000Mb/s, which is about 125 MB/s. We predict the remote interface is 125MB/s.
+
+\paragraph{Results}
+We present our measured results.
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation       &  Predicted & Measured\\
+\hline
+loopback for peak bandwidth & 1600 MB/s & 1540 MB/s \\
+remote for peak bandwidth & 125 MB/s  & 133 MB/s\\
+\end{tabular}
+\end{center}
+
+
+\paragraph{Discussion}
+Our predictions are very close to the measured results. For loopback interface, the speed is close to the memory bandwidth; For remote interface, the speed is close to the network bandwidth, we think it is because these two machines are in the same LAN.
+
+We also think the bandwidth can be influenced by many factors. For example, if the two machine are far from each other, then the route path is undecidable and the bandwidth will be influenced. \\
+
+How close to ideal hardware performance do you achieve? \\ 
+It is close to the hardware performance due to the perfect experiment environment.
