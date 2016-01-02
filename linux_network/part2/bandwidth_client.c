@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -38,7 +39,6 @@ int main(int argc , char *argv[])
     // Computing round trip time
     char *msg = (char*)malloc(size);
     unsigned long long start,end,diff;
-	int j = 0;
 
     start = rdtsc();
     recv(sockfd, &msg, size, MSG_WAITALL);
