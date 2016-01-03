@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,13 +14,12 @@
 
 int main(int argc , char *argv[])
 {      
-	if(argc != 4) {
-		perror("usage : ./client ip port size \n");
+	if(argc != 3) {
+		perror("usage : ./client ip port \n");
 		return -1;
 	}
 
 	int port = atoi(argv[2]);
-    int size = atoi(argv[3]);
 
     struct sockaddr_in server;
     server.sin_addr.s_addr =inet_addr(argv[1]);
@@ -33,24 +33,31 @@ int main(int argc , char *argv[])
         perror("Error: fails to create socket");
 		return -1;
 	}
+    
+    unsigned long long start,end,diff;
+    
+    start = rdtsc();
 
 	if (connect(sockfd,(struct sockaddr *)&server,sizeof(server)) < 0) {
 		perror("ERROR connecting");
 		return -1;
 	}
 
-    // Computing round trip time
-    char *msg = (char*)malloc(size);
-    unsigned long long start,end,diff;
-
-    start = rdtsc();
-    recv(sockfd, &msg, size, MSG_WAITALL);
     end = rdtsc();
+    
     diff = end - start;
+    
+    printf ("connection establish cycle is : %llu\n", diff);
+    
+    start = rdtsc();
 
     close(sockfd);
+    
+    end = rdtsc();
+    
+    diff = end - start;
 
-    printf ("PEAK bandwidth is : %f MB/s \n", (size/(1024*1.0*1024)) * (2.3e8 / diff) );
+    printf ("connection down cycle is : %llu\n", diff);
     
 	return 0;
 }

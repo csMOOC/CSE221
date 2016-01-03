@@ -1,19 +1,18 @@
+#include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h> 
 #include <netinet/in.h>
-#include <stdlib.h>
 
 int main(int argc , char *argv[])
 {
 	if(argc != 2) {
-		perror("usage : ./server port\n");
+		perror("usage : ./server port \n");
 		return -1;
 	}
-
-	int loops = 1000;
 
 	int port = atoi(argv[1]);
 
@@ -45,7 +44,7 @@ int main(int argc , char *argv[])
      
     //Accept incoming connection
     puts("Waiting   ...  \n");
-    char msg;
+
 
     //accept connection from an incoming client
     while(1)
@@ -57,12 +56,11 @@ int main(int argc , char *argv[])
             return -1;
     	}
 
-		int j = 0;
-        for (; j < loops; ++j) {
-            recv(client_sock, &msg, 1, 0);
-            send(client_sock, &msg, 1, 0);
-        }
+        
+        //close(client_sock);
     }
+    
+    close(server_sock);
 
     puts("Finish calculating \n");
      
