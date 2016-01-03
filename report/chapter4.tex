@@ -22,26 +22,26 @@ For main memory, we predict hardware cycles are 30 and software 10;
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
+\begin{tabular}{| p{1cm} | p{2cm} | p{2cm} | p{2cm} | p{3cm} | p{3cm} |}
 Array size              & Hardware  & Software  & Overall  & Measured  & Remove Overhead \\
 \hline
-1KB & 5 & 2 & 7 & 28.116605 & 1.116605 \\
-2KB & 5 & 2 & 7 & 28.864342 &  1.864342 \\
-4KB & 5 & 2 & 7 & 27.687838  & 0.687838\\
-8KB & 5 & 2 & 7 & 28.736381  & 1.736381\\
-16KB & 5 & 2 & 7 & 28.449469  & 1.449469 \\
-32KB & 6 & 3 & 9 & 28.104032  & 1.104032 \\
-64KB & 12 & 4 & 16 & 27.939144 &  0.939144\\
-128KB & 12 & 4 & 16 & 27.683588 &  0.683588\\
-256KB & 14 & 4 & 18 & 28.151352 &  1.151352\\
-512KB & 16 & 6 & 22 & 29.170154  & 2.170154 \\
-1MB & 16 & 6 & 22 & 32.495250  & 5.495250\\
-2MB & 16 & 6 & 22 & 35.461017 & 8.461017 \\
-4MB & 20 & 8 & 28 & 47.772894  & 20.772894\\
-8MB & 30 & 8 & 38 & 68.281862  & 41.281862\\
-16MB & 40 & 10 & 50 & 78.474217 & 51.474217 \\
-32MB & 40 & 10 & 50 & 86.430870 & 59.474217 \\
-64MB & 40 & 10 & 50 & 84.635278 & 57.635278 \\
+1KB & 5 cycles& 2 cycles& 7 cycles& 28.116605 cycles& 1.116605 cycles\\
+2KB & 5 cycles& 2 cycles& 7 cycles& 28.864342 cycles&  1.864342 cycles\\
+4KB & 5 cycles& 2 cycles& 7 cycles& 27.687838  cycles& 0.687838 cycles\\
+8KB & 5 cycles& 2 cycles& 7 cycles& 28.736381 cycles & 1.736381 cycles\\
+16KB & 5 cycles& 2 cycles& 7 cycles& 28.449469 cycles & 1.449469 cycles\\
+32KB & 6 cycles& 3 cycles& 9 cycles& 28.104032  cycles& 1.104032 cycles\\
+64KB & 12 cycles& 4 cycles& 16 cycles& 27.939144 cycles&  0.939144 cycles\\
+128KB & 12 cycles& 4 cycles& 16 cycles& 27.683588 cycles&  0.683588 cycles\\
+256KB & 14 cycles& 4 cycles& 18 cycles& 28.151352 cycles&  1.151352 cycles\\
+512KB & 16 cycles& 6 cycles& 22 cycles& 29.170154  cycles& 2.170154 cycles\\
+1MB & 16 cycles& 6 cycles& 22 cycles& 32.495250  cycles& 5.495250 cycles\\
+2MB & 16 cycles& 6 cycles& 22 cycles& 35.461017 cycles& 8.461017 cycles\\
+4MB & 20 cycles& 8 cycles& 28 cycles& 47.772894  cycles& 20.772894 cycles\\
+8MB & 30 cycles& 8 cycles& 38 cycles& 68.281862  cycles& 41.281862 cycles\\
+16MB & 40 cycles& 10 cycles& 50 cycles& 78.474217 cycles& 51.474217 cycles\\
+32MB & 40 cycles& 10 cycles& 50 cycles& 86.430870 cycles& 59.474217 cycles\\
+64MB & 40 cycles& 10 cycles& 50 cycles& 84.635278 cycles& 57.635278 cycles\\
 \end{tabular}
 \end{center}
 
@@ -77,7 +77,7 @@ We present our measure results.
 
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Operation             & Predicted cycle & Measured cycle  \\
+Operation             & Predicted Speed & Measured Speed  \\
 \hline
 READ & 1200MB/s & 1226MB/s \\
 WRITE & 1200MB/s & 1520MB/s \\
@@ -101,10 +101,10 @@ Because my page size is 4 KB, every page fault will loading 4 KB data from disk 
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-Operation   & Hardware  & Software  & Overall  & Measured   \\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-Service page fault(cycles) & 8384 & 100 & 8484 & 9898  \\
+Page Fault Service Time & 8384 cycles& 100 cycles& 8484 cycles& 9898 cycles\\
 
 \end{tabular}
 \end{center}

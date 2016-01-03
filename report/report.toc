@@ -18,19 +18,19 @@
 \contentsline {section}{\numberline {3.2}Procedure call overhead}{8}
 \contentsline {paragraph}{Methodology}{8}
 \contentsline {paragraph}{Predictions}{8}
-\contentsline {paragraph}{Results}{8}
+\contentsline {paragraph}{Results}{9}
 \contentsline {paragraph}{Discussion}{9}
 \contentsline {paragraph}{Question}{10}
 \contentsline {section}{\numberline {3.3}System call overhead}{10}
 \contentsline {paragraph}{Methodology}{10}
 \contentsline {paragraph}{Predictions}{10}
-\contentsline {paragraph}{Results}{10}
+\contentsline {paragraph}{Results}{11}
 \contentsline {paragraph}{Discussion}{11}
 \contentsline {paragraph}{Question}{11}
 \contentsline {section}{\numberline {3.4}Task creation time}{11}
 \contentsline {paragraph}{Methodology}{11}
 \contentsline {paragraph}{Predictions}{11}
-\contentsline {paragraph}{Results}{11}
+\contentsline {paragraph}{Results}{12}
 \contentsline {paragraph}{Discussion}{12}
 \contentsline {paragraph}{Question}{12}
 \contentsline {section}{\numberline {3.5}Context switch time}{12}
@@ -82,21 +82,17 @@
 \contentsline {paragraph}{Methodology}{24}
 \contentsline {paragraph}{Predictions}{24}
 \contentsline {paragraph}{Results}{24}
-\contentsline {paragraph}{Discussion}{26}
+\contentsline {paragraph}{Discussion}{27}
 \contentsline {section}{\numberline {6.3}Remote file read time}{27}
 \contentsline {paragraph}{Methodology}{27}
 \contentsline {paragraph}{Predictions}{27}
 \contentsline {paragraph}{Results}{27}
-\contentsline {paragraph}{Discussion}{28}
-\contentsline {paragraph}{Question}{28}
-\contentsline {section}{\numberline {6.4}Contention}{29}
-\contentsline {paragraph}{Methodology}{29}
-\contentsline {paragraph}{Predictions}{29}
-\contentsline {paragraph}{Results}{29}
-\contentsline {paragraph}{Discussion}{30}
-\contentsline {chapter}{\numberline {}Bibliography}{31}
-\contentsline {chapter}{\numberline {A}Example of operation}{32}
-\contentsline {section}{\numberline {A.1}Example input and output}{32}
-\contentsline {subsection}{\numberline {A.1.1}Input}{32}
-\contentsline {subsection}{\numberline {A.1.2}Output}{32}
-\contentsline {subsection}{\numberline {A.1.3}Another way to include code}{33}
+\contentsline {paragraph}{Discussion}{29}
+\contentsline {paragraph}{Question}{29}
+\contentsline {section}{\numberline {6.4}Contention}{30}
+\contentsline {paragraph}{Methodology}{30}
+\contentsline {paragraph}{Predictions}{30}
+\contentsline {paragraph}{Results}{30}
+\contentsline {paragraph}{Discussion}{31}
+\contentsline {chapter}{\numberline {}Bibliography}{33}
+\contentsline {chapter}{\numberline {A}Summary}{34}

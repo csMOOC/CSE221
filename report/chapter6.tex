@@ -67,19 +67,20 @@ We present our measure results. The base file is 4KB, and we define log(4KB) = 2
 \end{figure}
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-File Size             &  hardware & software & overall & Measured \\
+\begin{tabular}{| p{4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+File Size &  Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+
 \hline
-4KB & 19000 & 1000 & 20000 & 401481\\ 
-8KB & 19000 & 1000 & 20000 & 475677\\ 
-16KB & 19000 & 1000 & 20000 & 501356\\
-32KB & 19000 & 1000 & 20000 & 670260\\
-64KB & 19000 & 1000 & 20000 & 489722\\
-128KB & 19000 & 1000 & 20000 & 397495\\
-256KB & 19000 & 1000 & 20000 & 293712\\
-512KB & 19000 & 1000 & 20000 & 300106\\
-1024KB & 19000 & 1000 & 20000 & 281106\\
-2048KB & 19000 & 1000 & 20000 & 287629\\
+4KB & 19000 cycles& 1000 cycles& 20000 cycles& 401481 cycles\\ 
+8KB & 19000 cycles& 1000 cycles& 20000 cycles& 475677 cycles\\ 
+16KB & 19000 cycles& 1000 cycles& 20000 cycles& 501356 cycles\\
+32KB & 19000 cycles& 1000 cycles& 20000 cycles& 670260 cycles\\
+64KB & 19000 cycles& 1000 cycles& 20000 cycles& 489722 cycles\\
+128KB & 19000 cycles& 1000 cycles& 20000 cycles& 397495 cycles\\
+256KB & 19000 cycles& 1000 cycles& 20000 cycles& 293712 cycles\\
+512KB & 19000 cycles& 1000 cycles& 20000 cycles& 300106 cycles\\
+1024KB & 19000 cycles& 1000 cycles& 20000 cycles& 281106 cycles\\
+2048KB & 19000 cycles& 1000 cycles& 20000 cycles& 287629 cycles\\
 
 \end{tabular}
 \end{center}
@@ -87,19 +88,19 @@ File Size             &  hardware & software & overall & Measured \\
 Above is the result of sequential access. We can see on average it takes about 300000-600000 cycles to read each file block, far exceeding than we predicted previously.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-File Size             &  hardware & software & overall & Measured \\
+\begin{tabular}{| p{4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+File Size   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-4KB & 19000 & 1000 & 20000 & 420067\\ 
-8KB & 19000 & 1000 & 20000 & 393597\\ 
-16KB & 19000 & 1000 & 20000 & 502322\\
-32KB & 19000 & 1000 & 20000 & 405538\\
-64KB & 19000 & 1000 & 20000 & 425528\\
-128KB & 19000 & 1000 & 20000 & 426442\\
-256KB & 19000 & 1000 & 20000 & 504624\\
-512KB & 19000 & 1000 & 20000 & 492654\\
-1024KB & 19000 & 1000 & 20000 & 430804\\
-2048KB & 19000 & 1000 & 20000 & 426658\\
+4KB & 19000 cycles& 1000 cycles& 20000 cycles& 420067 cycles\\ 
+8KB & 19000 cycles& 1000 cycles& 20000 cycles& 393597 cycles\\ 
+16KB & 19000 cycles& 1000 cycles& 20000 cycles& 502322 cycles\\
+32KB & 19000 cycles& 1000 cycles& 20000 cycles& 405538 cycles\\
+64KB & 19000 cycles& 1000 cycles& 20000 cycles& 425528 cycles\\
+128KB & 19000 cycles& 1000 cycles& 20000 cycles& 426442 cycles\\
+256KB & 19000 cycles& 1000 cycles& 20000 cycles& 504624 cycles\\
+512KB & 19000 cycles& 1000 cycles& 20000 cycles& 492654 cycles\\
+1024KB & 19000 cycles& 1000 cycles& 20000 cycles& 430804 cycles\\
+2048KB & 19000 cycles& 1000 cycles& 20000 cycles& 426658 cycles\\
 
 \end{tabular}
 \end{center}
@@ -134,18 +135,18 @@ We present our measure results. The base file is 4KB, and we define log(4KB) = 2
 \end{figure}
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-File Size             &  hardware & software & overall & Measured \\
+\begin{tabular}{| p{4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+File Size  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-8KB & 800000 & 10000 & 810000 & 1060023\\ 
-16KB & 800000 & 10000 & 810000 & 1037613\\ 
-32KB & 800000 & 10000 & 810000 & 1155908\\
-64KB & 800000 & 10000 & 810000 & 1127454\\
-128KB & 800000 & 10000 & 810000 & 1134455\\
-256KB & 800000 & 10000 & 810000 & 1105819\\
-512KB & 800000 & 10000 & 810000 & 1085479\\
-1024KB & 800000 & 10000 & 810000 & 1089600\\
-2048KB & 800000 & 10000 & 810000 & 1074542\\
+8KB & 800000 cycles& 10000 cycles& 810000 cycles& 1060023 cycles\\ 
+16KB & 800000 cycles& 10000 cycles& 810000 cycles& 1037613 cycles\\ 
+32KB & 800000 cycles& 10000 cycles& 810000 cycles& 1155908 cycles\\
+64KB & 800000 cycles& 10000 cycles& 810000 cycles& 1127454 cycles\\
+128KB & 800000 cycles& 10000 cycles& 810000 cycles& 1134455 cycles\\
+256KB & 800000 cycles& 10000 cycles& 810000 cycles& 1105819 cycles\\
+512KB & 800000 cycles& 10000 cycles& 810000 cycles& 1085479 cycles\\
+1024KB & 800000 cycles& 10000 cycles& 810000 cycles& 1089600 cycles\\
+2048KB & 800000 cycles& 10000 cycles& 810000 cycles& 1074542 cycles\\
 
 \end{tabular}
 \end{center}
@@ -153,18 +154,18 @@ File Size             &  hardware & software & overall & Measured \\
 Above is the result of sequential access.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-File Size             &  hardware & software & overall & Measured \\
+\begin{tabular}{| p{4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+File Size  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-8KB & 800000 & 10000 & 810000 & 1043427\\ 
-16KB & 800000 & 10000 & 810000 & 1065662\\ 
-32KB & 800000 & 10000 & 810000 & 1058558\\
-64KB & 800000 & 10000 & 810000 & 1073499\\
-128KB & 800000 & 10000 & 810000 & 1073262\\
-256KB & 800000 & 10000 & 810000 & 1077349\\
-512KB & 800000 & 10000 & 810000 & 1074041\\
-1024KB & 800000 & 10000 & 810000 & 1074543\\
-2048KB & 800000 & 10000 & 810000 & 1044684\\
+8KB & 800000 cycles& 10000 cycles& 810000 cycles& 1043427 cycles\\ 
+16KB & 800000 cycles& 10000 cycles& 810000 cycles& 1065662 cycles\\ 
+32KB & 800000 cycles& 10000 cycles& 810000 cycles& 1058558 cycles\\
+64KB & 800000 cycles& 10000 cycles& 810000 cycles& 1073499 cycles\\
+128KB & 800000 cycles& 10000 cycles& 810000 cycles& 1073262 cycles\\
+256KB & 800000 cycles& 10000 cycles& 810000 cycles& 1077349 cycles\\
+512KB & 800000 cycles& 10000 cycles& 810000 cycles& 1074041 cycles\\
+1024KB & 800000 cycles& 10000 cycles& 810000 cycles& 1074543 cycles\\
+2048KB & 800000 cycles& 10000 cycles& 810000 cycles& 1044684 cycles\\
 
 \end{tabular}
 \end{center}
@@ -188,27 +189,27 @@ As previous experiment, we continue using F\_NOCACHE flag to disable file cache.
 We are sure that the more process number, the more cycles it spend on reading file. We think each read will result in a context switch to another process. We present predictions with results in the following table. We use 1MB file, including 256 blocks. Based on previous experiment on sequential reading 1MB file, when there is only 1 process, the reading cycles are 281106. When increasing a process, we add about 15000 cycles for hardware and 1000 for software.
 
 \paragraph{Results}
-We present our measure results(unit : cycles). 
+We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-nprocesses             &  hardware & software & overall & Measured\\
+\begin{tabular}{| p{4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+nprocesses   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-1 & 280000 & 1000 & 281000 & 229003 \\
-2 & 295000 & 2000 & 297000 & 253880 \\
-3 & 310000 & 3000 & 313000 & 209028 \\
-4 & 325000 & 4000 & 329000 & 240578 \\
-5 & 340000 & 5000 & 345000 & 432147 \\
-6 & 355000 & 6000 & 371000 & 438801 \\
-7 & 370000 &7000 & 377000 & 459831 \\
-8 & 385000 & 8000 & 393000 & 415745 \\
-9 & 400000 & 9000 & 409000 & 474147 \\
-10 & 415000 & 10000 & 425000 & 491004\\
-11 & 430000 & 11000 & 441000 & 515341 \\
-12 & 445000 & 12000 & 457000 & 515871 \\
-13 & 460000 & 13000 & 473000 & 536629\\
-14 & 475000 & 14000 & 489000 & 568728\\
-15 & 490000 & 15000 & 505000 & 590147\\
+1 & 280000 cycles& 1000 cycles& 281000cycles & 229003 cycles\\
+2 & 295000 cycles& 2000 cycles& 297000 cycles& 253880 cycles\\
+3 & 310000 cycles& 3000 cycles& 313000 cycles& 209028 cycles\\
+4 & 325000 cycles& 4000 cycles& 329000 cycles& 240578 cycles\\
+5 & 340000 cycles& 5000 cycles& 345000 cycles& 432147 cycles\\
+6 & 355000 cycles& 6000 cycles& 371000 cycles& 438801 cycles\\
+7 & 370000 cycles& 7000 cycles& 377000 cycles& 459831 cycles\\
+8 & 385000 cycles& 8000 cycles& 393000 cycles& 415745 cycles\\
+9 & 400000 cycles& 9000 cycles& 409000 cycles& 474147 cycles\\
+10 & 415000 cycles& 10000 cycles& 425000 cycles& 491004 cycles\\
+11 & 430000 cycles& 11000 cycles& 441000 cycles& 515341 cycles\\
+12 & 445000 cycles& 12000 cycles& 457000 cycles& 515871 cycles\\
+13 & 460000 cycles& 13000 cycles& 473000 cycles& 536629 cycles\\
+14 & 475000 cycles& 14000 cycles& 489000 cycles& 568728 cycles\\
+15 & 490000 cycles& 15000 cycles& 505000 cycles& 590147 cycles\\
 
 \end{tabular}
 \end{center}

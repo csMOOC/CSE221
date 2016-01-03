@@ -19,11 +19,11 @@ For remote interface. We measure the hardware cycles are 100000, software cycles
 We present our measured results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-Operation       &  Hardware & Software & Overall & Measured\\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Operation   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-loopback & 20000 & 5000 & 25000 & 69882 \\
-remote & 100000 & 10000& 110000 & 627772 \\
+Loopback RTT & 20000 cycles& 5000 cycles& 25000 cycles& 69882 cycles\\
+Remote RTT & 100000 cycles& 10000 cycles& 110000 cycles& 627772 cycles\\
 \end{tabular}
 \end{center}
 
@@ -32,8 +32,8 @@ Following is the Ping results.
 \begin{tabular}{l*{6}{c}r}
 Operation       &  RTT & Corresponding Cycles\\
 \hline
-loopback & 0.070ms & 161000 \\
-remote & 0.196ms &  450800 \\
+loopback & 0.070ms & 161000 cycles\\
+remote & 0.196ms &  450800 cycles\\
 \end{tabular}
 \end{center}
 
@@ -71,10 +71,10 @@ We present our measured results.
 
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Operation       &  Predicted & Measured\\
+Operation       &  Predicted Speed& Measured Speed\\
 \hline
-loopback for peak bandwidth & 1600 MB/s & 1540 MB/s \\
-remote for peak bandwidth & 125 MB/s  & 133 MB/s\\
+Loopback Peak Bandwidth & 1600 MB/s & 1540 MB/s \\
+Remote Peak Bandwidth & 125 MB/s  & 133 MB/s\\
 \end{tabular}
 \end{center}
 
@@ -99,16 +99,16 @@ First, we think it is more expensive to setup the connection than tear down. Bec
 Based on previous experience on RTT experiment, we made following predictions.
 
 \paragraph{Results}
-We present our measured results. (units : cycle)
+We present our measured results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-Operation       &  hardware & software & Predicted & Measured\\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-loopback connection setup & 35000 & 5000 & 40000 & 306665 & \\
-loopback connection tear-down & 20000 & 3000 & 23000 & 54334 & \\
-remote connection setup & 300000  & 30000 & 330000 & 622923 &\\
-remote connection tear-down & 150000  & 15000 & 165000 & 141333\\
+Loopback Connection Setup & 35000 cycles& 5000 cycles& 40000 cycles& 306665 cycles \\
+Loopback Connection Tear-down & 20000 cycles& 3000 cycles& 23000 cycles& 54334 cycles \\
+Remote Connection Setup & 300000  cycles& 30000 cycles& 330000 cycles& 622923 cycles\\
+Remote Connection Tear-down & 150000  cycles& 15000 cycles& 165000 cycles& 141333 cycles\\
 \end{tabular}
 \end{center}
 

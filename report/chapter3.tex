@@ -19,11 +19,11 @@ As for iterations of an operation, I guess software takes 3 cycles to do branch 
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-Operation              & Hardware  & Software  & Overall  & Measured   \\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-Reading time(cycles) & 9 & 8 & 17 & 19  \\
-Using a loop (cycles)           & 2 & 3 & 5 & 5 \\
+Reading time& 9 cycles& 8 cycles& 17 cycles& 19 cycles \\
+Using a loop  & 2 cycles& 3 cycles& 5 cycles& 5 cycles\\
 \end{tabular}
 \end{center}
 
@@ -93,11 +93,11 @@ As for hardware, it may take 10 cycles to read ppid. As for software, it is hard
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-System call              & Hardware  & Software  & Overall  & Measured & Remove Overhead  \\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+System call  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-getppid() (cycles) & 200 & 10 & 210 & 302 & 297  \\
-getpid() (cycles) & ~ & ~ & ~ & 9 & 4  \\
+getppid() & 200 cycles& 10 cycles& 210 cycles& 297 cycles \\
+getpid() & ~ & ~ & ~ & 4 cycles \\
 \end{tabular}
 \end{center}
 
@@ -124,11 +124,11 @@ For thread, I measure the hardware cycles are 50, and the software is 200.
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-Task creation              & Hardware  & Software  & Overall  & Measured   \\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Task creation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-process & 2000 & 200 & 2200 & 181932  \\
-kernel thread    & 200 & 50 & 250 & 16509 \\
+process & 2000 cycles& 200 cycles& 2200 cycles& 181932  cycles\\
+kernel thread    & 200 cycles& 50 cycles& 250 cycles& 16509 cycles\\
 \end{tabular}
 \end{center}
 
@@ -163,11 +163,11 @@ For thread context switch, I think hard cycles are 2000 cycles and software are 
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{l*{6}{c}r}
-Context switch              & Hardware  & Software  & Overall  & Measured   \\
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Context switch              & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-process & 20000 & 5000 & 25000 & 133221  \\
-kernel thread    & 2000 & 500 & 2500 & 9752 \\
+process & 20000 cycles& 5000 cycles& 25000cycles & 133221 cycles \\
+kernel thread    & 2000 cycles& 500 cycles& 2500 cycles& 9752 cycles\\
 \end{tabular}
 \end{center}
 
