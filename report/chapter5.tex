@@ -86,3 +86,32 @@ We also think the bandwidth can be influenced by many factors. For example, if t
 
 How close to ideal hardware performance do you achieve? \\ 
 It is close to the hardware performance due to the perfect experiment environment.
+
+\section{Connection overhead}
+In this part, we try to explore connection overhead.
+
+\paragraph{Methodology}
+We measure connection setup cycle at client side and connection tear-down cycle at server side.
+
+\paragraph{Predictions}
+First, we think it is more expensive to setup the connection than tear down. Because we use handshake protocal to setup the connection. 
+
+Based on previous experience on RTT experiment, we made following predictions.
+
+\paragraph{Results}
+We present our measured results. (units : cycle)
+
+\begin{center}
+\begin{tabular}{l*{6}{c}r}
+Operation       &  hardware & software & Predicted & Measured\\
+\hline
+loopback connection setup & 35000 & 5000 & 40000 & 306665 & \\
+loopback connection tear-down & 20000 & 3000 & 23000 & 54334 & \\
+remote connection setup & 300000  & 30000 & 330000 & 622923 &\\
+remote connection tear-down & 150000  & 15000 & 165000 & 141333\\
+\end{tabular}
+\end{center}
+
+
+\paragraph{Discussion}
+Our predictions are neither far away from nor close to the measure results.

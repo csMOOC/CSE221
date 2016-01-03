@@ -49,15 +49,15 @@ int main(int argc , char *argv[])
     
     printf ("connection establish cycle is : %llu\n", diff);
     
-    start = rdtsc();
+    // start = rdtsc();
 
-    close(sockfd);
+    // close(sockfd);
     
-    end = rdtsc();
+    // end = rdtsc();
     
-    diff = end - start;
+    // diff = end - start;
 
-    printf ("connection down cycle is : %llu\n", diff);
+    // printf ("connection down cycle is : %llu\n", diff);
     
 	return 0;
 }
