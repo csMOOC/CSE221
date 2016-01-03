@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <sys/socket.h> 
 #include <netinet/in.h>
+#include "rdtsc.h"
 
 int main(int argc , char *argv[])
 {
@@ -56,8 +57,17 @@ int main(int argc , char *argv[])
             return -1;
     	}
 
+		unsigned long long start, end, diff;
+
+		start = rdtsc();
         
-        //close(client_sock);
+        close(client_sock);
+
+		end = rdtsc();
+
+		diff = end - start;
+
+		printf("connection shutdwon cycle : %llu \n", diff);
     }
     
     close(server_sock);
