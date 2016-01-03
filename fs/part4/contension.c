@@ -44,7 +44,7 @@ int *proc_create(int n) {
 int main(int argc, char* argv[]) {
     
     if(argc < 2) {
-        perror("usage : ./program 9\n The argument is in[0,9]\n");
+        perror("usage : ./program 9\n The argument is in[0,14] \n");
         exit(0);
     }
     
