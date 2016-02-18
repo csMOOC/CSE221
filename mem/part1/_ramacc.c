@@ -5,6 +5,9 @@
 #include <string.h>
 
 
+# define MINARRAYSIZE 9
+# define MAXARRAYSIZE 27
+
 int main(int argc, char* argv[]) {
     
 	if(argc < 2) {
@@ -13,55 +16,51 @@ int main(int argc, char* argv[]) {
 	}
 
 	unsigned long long loops = atoi(argv[1]);
-    unsigned long long start, end;
-    loops = 1000000;
     
-    rdtsc();
-    rdtsc();
-    rdtsc();
-
-    int stride = 1;
+    int	**array;
+    void **p;
+    int	size, stride, i;
     
-    for(;stride <= 12;stride++) {
+    for (stride = 1; stride < (2<<10); stride=stride*2) {
         
-        int arraysizestride = 13;
+        //store arrays
+        //double b[100];
+        //int j = 0;
         
-        for(;arraysizestride <= 24;arraysizestride++) {
-        
-            unsigned long long arraysize = 1 << arraysizestride;
-            unsigned long long footlength = 1 << stride;
+        for (size = MINARRAYSIZE; size <= MAXARRAYSIZE; size++)
+        {
+            if (!(array = malloc(1 << size)))
+            {
+                fprintf(stderr, "Malloc failure\n");
+                exit(1);
+            }
+            for (i = 0; i + 1 < (1 << size) / (stride * sizeof(*array)); i++)
+                array[i * stride] = (int *)(array + ((i + 1) * stride));
+            array[i * stride] = (int *)array;
+            p = (void **)array;
             
-            int i = 0;
-            unsigned long long total = 0;
-            char *array = (char*)malloc(sizeof(char)*arraysize);
-            memset(array, 0, arraysize);
-            int pos = 0;
-            
-            unsigned long long start,end,diff;
+            unsigned long long start, end;
             
             start = rdtsc();
-            
-            for(;i < loops;i++) {
-                
-                int k = array[pos];
-                
-                pos = (pos+footlength)%arraysize;
-                
-            }
+            for (i = 0; i < loops; ++i)
+                p = *p;
             end = rdtsc();
             
-            total += (end - start);
-            free(array);
+            double res =  (double)(end - start) / (double)loops;
+            //b[j++] = res;
             
-            printf ("RAM access time and average time(stride %d arraysize %d): %llu  %llu\n", stride, arraysizestride,total, total/loops);
-        
+            printf("stride %d and size %d = %f\n", stride, size, res);
+            free(array);
         }
         
+        //int jj = 0;
+        //printf("[");
+        //for(;jj < j;jj++)
+            //printf("%f,", b[jj]);
+        //printf("]\n");
     }
     
-    
-    
-    return 0;
-    
 }
-
+    
+    
+    

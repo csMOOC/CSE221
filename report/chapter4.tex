@@ -4,11 +4,9 @@
 In this part, we report latency for individual integer accesses to main memory and the L1 and L2 caches.
 
 \paragraph{Methodology}
-To test memory access latency, I first followed the procedure described in the lmbench paper, testing different stride lengths over varying sizes of arrays. But it is something like sequential access, I wrote code and got the test data, found that it is hard to distinguish different level cache.
+To test memory access latency, I first followed the procedure described in the lmbench paper, testing different stride lengths over varying sizes of arrays. 
 
-Then I choose random access as my methodology. For different array size, I iterate 1 million times, each is random access.
-
-The overhead of random generator and iterations are about  27 cycles.
+Then I did not use normal array access, like A[i]. Because it may have other overheads. For example, the compiler may first calculate the address then access the element. Instead we use pointer access and store the next pointer in current variable. So we allocate an array of pointer of int, and each store the next element address.
 
 \paragraph{Predictions}
 Different level caches and main memory have different access cycles.
@@ -22,44 +20,36 @@ For main memory, we predict hardware cycles are 30 and software 10;
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{| p{1cm} | p{2cm} | p{2cm} | p{2cm} | p{3cm} | p{3cm} |}
-Array size              & Hardware  & Software  & Overall  & Measured  & Remove Overhead \\
+\begin{tabular}{| p{1.5cm} | p{2cm} | p{2cm} | p{2cm} | p{2.5cm} | p{3cm} |}
+TYPE             & Hardware  & Software  & Overall  & Measured  & Remove Overhead \\
 \hline
-1KB & 5 cycles& 2 cycles& 7 cycles& 28.116605 cycles& 1.116605 cycles\\
-2KB & 5 cycles& 2 cycles& 7 cycles& 28.864342 cycles&  1.864342 cycles\\
-4KB & 5 cycles& 2 cycles& 7 cycles& 27.687838  cycles& 0.687838 cycles\\
-8KB & 5 cycles& 2 cycles& 7 cycles& 28.736381 cycles & 1.736381 cycles\\
-16KB & 5 cycles& 2 cycles& 7 cycles& 28.449469 cycles & 1.449469 cycles\\
-32KB & 6 cycles& 3 cycles& 9 cycles& 28.104032  cycles& 1.104032 cycles\\
-64KB & 12 cycles& 4 cycles& 16 cycles& 27.939144 cycles&  0.939144 cycles\\
-128KB & 12 cycles& 4 cycles& 16 cycles& 27.683588 cycles&  0.683588 cycles\\
-256KB & 14 cycles& 4 cycles& 18 cycles& 28.151352 cycles&  1.151352 cycles\\
-512KB & 16 cycles& 6 cycles& 22 cycles& 29.170154  cycles& 2.170154 cycles\\
-1MB & 16 cycles& 6 cycles& 22 cycles& 32.495250  cycles& 5.495250 cycles\\
-2MB & 16 cycles& 6 cycles& 22 cycles& 35.461017 cycles& 8.461017 cycles\\
-4MB & 20 cycles& 8 cycles& 28 cycles& 47.772894  cycles& 20.772894 cycles\\
-8MB & 30 cycles& 8 cycles& 38 cycles& 68.281862  cycles& 41.281862 cycles\\
-16MB & 40 cycles& 10 cycles& 50 cycles& 78.474217 cycles& 51.474217 cycles\\
-32MB & 40 cycles& 10 cycles& 50 cycles& 86.430870 cycles& 59.474217 cycles\\
-64MB & 40 cycles& 10 cycles& 50 cycles& 84.635278 cycles& 57.635278 cycles\\
+
+L1	&   5 cycles  & 2 cycles & 7 cycles  &  7.5  cycles &  4.5 cycles \\
+L2    &   10 cycles & 4 cycles & 14 cycles & 11.2 cycles &  8.2 cycles \\
+L3 	&   15 cycles & 6 cycles & 21 cycles &  24.2 cycles & 21.2 cycles \\
+Memory & 30 cycles & 10 cycles & 40 cycles & 200.3 cycles & 197.3 cycles \\
 \end{tabular}
 \end{center}
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=6in]{./pics/ramacc.jpg} 
-   \caption{RAM access}
-   \label{fig:RAM access}
+
+\begin {figure}
+\centering
+\includegraphics[width=2.6in]{./pics/ram1.png}
+\includegraphics[width=2.6in]{./pics/ram2.png}
+\caption{1，2}\label{RAM access}
 \end{figure}
 
+
 \paragraph{Discussion}
-It is easy to see the transition from L3-cache to main memory, it is very steep in the picture from array size 22 to 24. Because my L3-cache is 6MB, so it is between 22 and 24.
+It is easy to see the transition from L3-cache to main memory, it is very steep in the picture from array size 22 to 23. Because my L3-cache is 6MB, so it is between 22 and 23.
 
-We can also see the transitions from L2-cache to L3-cache. In the picture, from 18 to 20, the access time increase. Because my L2-cache is 256KB, which is equal to 18 in the picture.
+We can also see the transitions from L2-cache to L3-cache. In the picture exactly in 18, the access time increase. Because my L2-cache is 256KB, which is equal to 18 in the picture.
 
-But I can't see the transition from L1-cache to L2-cache in the picture.
+In the scaled picture, it is very obvious to see transition from L1-cache to L2-cache, located in 15(32K).
 
 We can also see that within cache, the RAM access time cycles are very small compared to that of main memory access.
+
+
 
 \section{RAM bandwidth}
 In this part, we report bandwidth for both reading and writing.

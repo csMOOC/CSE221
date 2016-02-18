@@ -28,7 +28,7 @@ cpu5 :
 	gcc -Iinclude -o cpu5.2.out cpu/part5/thread_cs.c;mv cpu5.2.out build
 
 mem1 : 
-	gcc -Iinclude -o mem1.1.out mem/part1/ramacc.c;mv mem1.1.out build
+	gcc -Iinclude -o mem1.1.out mem/part1/_ramacc.c;mv mem1.1.out build
 
 mem2 : 
 	gcc -Iinclude -o mem2.1.out mem/part2/rambandwith.c;mv mem2.1.out build

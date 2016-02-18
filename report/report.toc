@@ -39,4 +39,22 @@
 \contentsline {paragraph}{Results}{13}
 \contentsline {paragraph}{Discussion}{13}
 \contentsline {paragraph}{Question}{13}
-\contentsline {chapter}{\numberline {}Bibliography}{14}
+\contentsline {chapter}{\numberline {4}Memory}{14}
+\contentsline {section}{\numberline {4.1}RAM access time}{14}
+\contentsline {paragraph}{Methodology}{14}
+\contentsline {paragraph}{Predictions}{14}
+\contentsline {paragraph}{Results}{14}
+\contentsline {paragraph}{Discussion}{15}
+\contentsline {section}{\numberline {4.2}RAM bandwidth}{15}
+\contentsline {paragraph}{Methodology}{16}
+\contentsline {paragraph}{Predictions}{16}
+\contentsline {paragraph}{Results}{16}
+\contentsline {paragraph}{Discussion}{16}
+\contentsline {section}{\numberline {4.3}Page fault service time}{16}
+\contentsline {paragraph}{Methodology}{16}
+\contentsline {paragraph}{Predictions}{16}
+\contentsline {paragraph}{Results}{17}
+\contentsline {paragraph}{Discussion}{17}
+\contentsline {paragraph}{Question}{17}
+\contentsline {chapter}{\numberline {}Bibliography}{18}
+\contentsline {chapter}{\numberline {5}Summary}{19}
