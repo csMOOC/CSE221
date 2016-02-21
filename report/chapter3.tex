@@ -162,11 +162,11 @@ For thread context switch, I think hard cycles are 2000 cycles and software are 
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-Context switch              & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\begin{tabular}{| p{2cm} | p{3cm} | p{3cm} | p{2.5cm} | p{2.5cm} | p{2cm} }
+Context switch              & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time & Std  \\
 \hline
-process & 20000 cycles& 5000 cycles& 25000cycles & 133221 cycles \\
-kernel thread    & 2000 cycles& 500 cycles& 2500 cycles& 9752 cycles\\
+process & 20000 cycles& 5000 cycles& 25000cycles & 133221 cycles & 3428 \\
+kernel thread    & 2000 cycles& 500 cycles& 2500 cycles& 9752 cycles & 439 \\
 \end{tabular}
 \end{center}
 

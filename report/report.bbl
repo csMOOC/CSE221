@@ -1,5 +1,10 @@
 \begin{thebibliography}{TEAL91}
 
+\bibitem[ASG83]{page}
+Greg~Gagne Abraham~Silberschatz and Peter~Baer Galvin.
+\newblock {\em Operating System Concepts}.
+\newblock Wiley Global Education, 1983.
+
 \bibitem[kaz05]{rdtsc}
 kazutomo.
 \newblock {\em http://www.mcs.anl.gov/\~kazutomo/rdtsc.h}.

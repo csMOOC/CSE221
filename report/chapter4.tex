@@ -85,7 +85,9 @@ In this part, we report the time for faulting an entire page from disk.
 According to the hint, we find that mmap is one useful mechanism. Because file contents are not read from disk initially and do not use physical RAM at all. The actual reads from disk are performed in a "lazy" manner, after a specific location is accessed. Before accessing the content, we record time, after accessing we record again then we can get the page fault service time.
 
 \paragraph{Predictions}
-Because my page size is 4 KB, every page fault will loading 4 KB data from disk to memory. SSD read/write speed is fast, so I predict the hardware cycles are 4192 * 2 = 8384 cycles and software cycles are 100.
+According to some OS textbook \cite{page}, the page fault service time is about 8ms, the CPU frequency at that time is about 5MHz. So 8ms is about 16000 cycles.
+
+Because my page size is 4 KB, every page fault will loading 4 KB data from disk to memory. SSD read/write speed is fast, so I predict the hardware overhead are 4096 * 2 = 8192 cycles and software overhead are 8000 cycles.
 
 \paragraph{Results}
 We present our measure results.
@@ -94,14 +96,29 @@ We present our measure results.
 \begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
 Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
 \hline
-Page Fault Service Time & 8384 cycles& 100 cycles& 8484 cycles& 9898 cycles\\
+Page Fault Service Time & 8192 cycles& 8000 cycles& 16192 cycles& 9898 cycles\\
 
 \end{tabular}
 \end{center}
 
 \paragraph{Discussion}
-Our estimation is pretty close to the measured result. When a page fault occurs, the program trap into kernel, then kernel load data from disk to memory. 
+Our estimation is a little higher than the measured result. Maybe today the hardware is much faster or the linux kernel serve page fault faster than that time.
+
+Whenever the cpu detects a page-fault, its action depends on Current Privilege Level. If  CPL == 3  (executing in user mode)
+the CPU will switch to its kernel-mode stack:
+
+\begin{enumerate}
+\item push  SS  and  ESP
+\item push  EFLAGS
+\item push  CS
+\item push  EIP
+\item push  error-code
+\item jump to the page-fault service-routine  
+\end{enumerate}
+
+So there are a lot of work to do. 
+
 
 \paragraph{Question} Dividing by the size of a page, how does it compare to the latency of accessing a byte from main memory?
 
-The page size in our system is 4 KB, so it is approximately 2 cycles per byte of data transfered, compared to about 50 cycles per byte from main memory. May be this is the power of SSD.
+The page size in our system is 4 KB, so it is approximately 1-2 cycles per byte of data transfered, compared to about 200 cycles per byte from main memory. May be this is the power of SSD.
