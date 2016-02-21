@@ -4,7 +4,7 @@
 In this part, we report latency for individual integer accesses to main memory and the L1 and L2 caches.
 
 \paragraph{Methodology}
-To test memory access latency, I first followed the procedure described in the lmbench paper, testing different stride lengths over varying sizes of arrays. 
+To test memory access latency, I first followed the procedure described in the lmbench paper \cite{ramacc}, testing different stride lengths over varying sizes of arrays. 
 
 Then I did not use normal array access, like A[i]. Because it may have other overheads. For example, the compiler may first calculate the address then access the element. Instead we use pointer access and store the next pointer in current variable. So we allocate an array of pointer of int, and each store the next element address.
 

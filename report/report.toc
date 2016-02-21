@@ -29,32 +29,32 @@
 \contentsline {paragraph}{Question}{11}
 \contentsline {section}{\numberline {3.4}Task creation time}{11}
 \contentsline {paragraph}{Methodology}{11}
-\contentsline {paragraph}{Predictions}{11}
+\contentsline {paragraph}{Predictions}{12}
 \contentsline {paragraph}{Results}{12}
 \contentsline {paragraph}{Discussion}{12}
 \contentsline {paragraph}{Question}{12}
 \contentsline {section}{\numberline {3.5}Context switch time}{12}
-\contentsline {paragraph}{Methodology}{12}
+\contentsline {paragraph}{Methodology}{13}
 \contentsline {paragraph}{Predictions}{13}
 \contentsline {paragraph}{Results}{13}
 \contentsline {paragraph}{Discussion}{13}
-\contentsline {paragraph}{Question}{13}
-\contentsline {chapter}{\numberline {4}Memory}{14}
-\contentsline {section}{\numberline {4.1}RAM access time}{14}
-\contentsline {paragraph}{Methodology}{14}
-\contentsline {paragraph}{Predictions}{14}
-\contentsline {paragraph}{Results}{14}
-\contentsline {paragraph}{Discussion}{15}
-\contentsline {section}{\numberline {4.2}RAM bandwidth}{15}
-\contentsline {paragraph}{Methodology}{16}
-\contentsline {paragraph}{Predictions}{16}
-\contentsline {paragraph}{Results}{16}
+\contentsline {paragraph}{Question}{14}
+\contentsline {chapter}{\numberline {4}Memory}{15}
+\contentsline {section}{\numberline {4.1}RAM access time}{15}
+\contentsline {paragraph}{Methodology}{15}
+\contentsline {paragraph}{Predictions}{15}
+\contentsline {paragraph}{Results}{15}
 \contentsline {paragraph}{Discussion}{16}
-\contentsline {section}{\numberline {4.3}Page fault service time}{16}
-\contentsline {paragraph}{Methodology}{16}
-\contentsline {paragraph}{Predictions}{16}
+\contentsline {section}{\numberline {4.2}RAM bandwidth}{16}
+\contentsline {paragraph}{Methodology}{17}
+\contentsline {paragraph}{Predictions}{17}
 \contentsline {paragraph}{Results}{17}
 \contentsline {paragraph}{Discussion}{17}
-\contentsline {paragraph}{Question}{17}
-\contentsline {chapter}{\numberline {}Bibliography}{18}
-\contentsline {chapter}{\numberline {5}Summary}{19}
+\contentsline {section}{\numberline {4.3}Page fault service time}{17}
+\contentsline {paragraph}{Methodology}{17}
+\contentsline {paragraph}{Predictions}{17}
+\contentsline {paragraph}{Results}{18}
+\contentsline {paragraph}{Discussion}{18}
+\contentsline {paragraph}{Question}{18}
+\contentsline {chapter}{\numberline {}Bibliography}{19}
+\contentsline {chapter}{\numberline {5}Summary}{20}

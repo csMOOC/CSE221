@@ -18,6 +18,6 @@ int main(int argc, char* argv[]) {
     for (i = 0; i < loops; ++i) {}
     end = rdtsc();
 	unsigned long long total = end - start;
-    printf ("CPU iteration total time and average time: %llu  %llu\n", total, total/loops);
+    printf ("CPU iteration total time and average time: %llu  %f\n", total, total*1.0/loops);
 }
 

@@ -1,8 +1,19 @@
-\begin{thebibliography}{kaz05}
+\begin{thebibliography}{TEAL91}
 
 \bibitem[kaz05]{rdtsc}
 kazutomo.
 \newblock {\em http://www.mcs.anl.gov/\~kazutomo/rdtsc.h}.
 \newblock 2005.
+
+\bibitem[MS96]{ramacc}
+Larry McVoy and Carl Staelin.
+\newblock {\em lmbench: Portable Tools for Performance Analysis}.
+\newblock Proc. of USENIX Annual Technical Conference, 1996.
+
+\bibitem[TEAL91]{task}
+EDWARD D.~LAZOWSKA THOMAS E.~ANDERSON, BRIAN N.~BERSHAD and HENRY~M. LEVY.
+\newblock {\em Scheduler Activations: Effective Kernel Support for the
+  User-Level Management of Parallelism}.
+\newblock SOSP, 1991.
 
 \end{thebibliography}

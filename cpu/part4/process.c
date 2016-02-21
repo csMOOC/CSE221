@@ -11,6 +11,8 @@ int main(int argc, char **argv) {
         exit(0);
     }
     
+    unsigned long long overhead = 133221;
+    
     int loops = atoi(argv[1]);
     unsigned long long total = 0;
     unsigned long long start, end;
@@ -21,7 +23,6 @@ int main(int argc, char **argv) {
         
         start = rdtsc();
         pid_t pid = fork();
-        end = rdtsc();
         
         if (pid == -1) {
             printf("fork failed!\n");
@@ -29,11 +30,12 @@ int main(int argc, char **argv) {
         }
         
         if (pid == 0) {
-            return 0;
+            exit(-1);
         } else {
-            unsigned long long diff = end - start;
-            total += diff;
             wait(NULL);
+            end = rdtsc();
+            unsigned long long diff = end - start;
+            total += (diff - 2*overhead);
         }
     }
 

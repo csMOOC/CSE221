@@ -25,7 +25,7 @@ void fun0() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("0 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("0 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 void fun1() {
@@ -39,7 +39,7 @@ void fun1() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("1 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("1 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 void fun2() {
@@ -53,7 +53,7 @@ void fun2() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("2 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("2 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 void fun3() {
@@ -67,7 +67,7 @@ void fun3() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("3 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("3 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 void fun4() {
@@ -81,7 +81,7 @@ void fun4() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("4 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("4 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 void fun5() {
@@ -95,7 +95,7 @@ void fun5() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("5 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("5 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 void fun6() {
@@ -109,7 +109,7 @@ void fun6() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("6 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("6 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 
@@ -124,7 +124,7 @@ void fun7() {
     }
     end = rdtsc();
     total0 = end - start;
-    printf("7 argument procedure call overhead is : %llu cycles; Total : %llu \n", total0/loops, total0);
+    printf("7 argument procedure call overhead is : %f cycles; Total : %llu \n", total0*1.0/loops, total0);
 }
 
 int main(int argc, char **argv) {

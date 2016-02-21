@@ -12,14 +12,15 @@ int main(int argc, char* argv[]) {
 	int loops = atoi(argv[1]);
 
 	unsigned long long total = 0;
+    unsigned long long start, end;
 
 	int i = 0;
+    
 	for (; i < loops; i++) {
-		unsigned long long start, end;
 		start = rdtsc();
 		end = rdtsc();
 		total += (end - start);
 	}
 
-	printf("CPU reading rdtsc average time :%llu  %llu\n", total, total/loops);
+	printf("CPU reading rdtsc average time :%llu  %f\n", total, total*1.0/loops);
 }

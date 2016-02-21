@@ -5,51 +5,55 @@ A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
 A level-1 auxiliary file: chapter3.aux
 A level-1 auxiliary file: chapter4.aux
-A level-1 auxiliary file: chapter5.aux
-A level-1 auxiliary file: chapter6.aux
 The style file: alpha.bst
 A level-1 auxiliary file: appendix1.aux
 Database file #1: refs.bib
+Name 1 in "THOMAS E. ANDERSON, BRIAN N. BERSHAD, EDWARD D. LAZOWSKA, and HENRY M. LEVY" has a comma at the end for entry task
+while executing---line 1185 of file alpha.bst
+Name 1 in "THOMAS E. ANDERSON, BRIAN N. BERSHAD, EDWARD D. LAZOWSKA, and HENRY M. LEVY" has a comma at the end for entry task
+while executing---line 1185 of file alpha.bst
 Warning--empty publisher in rdtsc
-You've used 1 entry,
+Name 1 in "THOMAS E. ANDERSON, BRIAN N. BERSHAD, EDWARD D. LAZOWSKA, and HENRY M. LEVY" has a comma at the end for entry task
+while executing---line 1250 of file alpha.bst
+You've used 3 entries,
             2543 wiz_defined-function locations,
-            569 strings with 4578 characters,
-and the built_in function-call counts, 295 in all, are:
-= -- 22
-> -- 8
+            577 strings with 4862 characters,
+and the built_in function-call counts, 947 in all, are:
+= -- 80
+> -- 46
 < -- 1
-+ -- 2
-- -- 2
-* -- 17
-:= -- 56
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 4
-chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 16
-empty$ -- 26
-format.name$ -- 4
-if$ -- 56
++ -- 14
+- -- 14
+* -- 55
+:= -- 170
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 14
+chr.to.int$ -- 3
+cite$ -- 4
+duplicate$ -- 46
+empty$ -- 76
+format.name$ -- 18
+if$ -- 188
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 8
-num.names$ -- 3
-pop$ -- 10
+missing$ -- 6
+newline$ -- 18
+num.names$ -- 9
+pop$ -- 28
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 20
 quote$ -- 0
-skip$ -- 11
+skip$ -- 35
 stack$ -- 0
-substring$ -- 7
-swap$ -- 1
+substring$ -- 21
+swap$ -- 3
 text.length$ -- 1
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 4
+type$ -- 12
 warning$ -- 1
-while$ -- 2
-width$ -- 2
-write$ -- 13
-(There was 1 warning)
+while$ -- 8
+width$ -- 4
+write$ -- 37
+(There were 3 error messages)

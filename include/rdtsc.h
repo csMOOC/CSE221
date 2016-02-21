@@ -1,5 +1,22 @@
+#include "math.h"
+
 #ifndef __RDTSC_H_DEFINED__
 #define __RDTSC_H_DEFINED__
+
+
+double standard_deviation(double data[], int n)
+{
+    double mean=0.0, sum_deviation=0.0;
+    int i;
+    for(i=0; i<n;++i)
+    {
+        mean+=data[i];
+    }
+    mean=mean/n;
+    for(i=0; i<n;++i)
+        sum_deviation+=(data[i]-mean)*(data[i]-mean);
+    return sqrt(sum_deviation/n);
+}
 
 
 #if defined(__i386__)

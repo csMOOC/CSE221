@@ -19,11 +19,11 @@ As for iterations of an operation, I guess software takes 3 cycles to do branch 
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\begin{tabular}{| p{2cm} | p{3cm} | p{3cm} | p{2cm} | p{3cm} | p{1cm} }
+Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time  & Std  \\
 \hline
-Reading time& 9 cycles& 8 cycles& 17 cycles& 19 cycles \\
-Using a loop  & 2 cycles& 3 cycles& 5 cycles& 5 cycles\\
+Reading time & 9 cycles& 8 cycles& 17 cycles& 19.51327 cycles  & 1.9087  \\
+Using a loop  & 2 cycles& 3 cycles& 5 cycles& 5.726476 cycles & 0.1728 \\
 \end{tabular}
 \end{center}
 
@@ -47,16 +47,16 @@ We present our measure results(unit : cycle).
 
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Args              & Hardware  & Software  & Overall  & Measured  & Remove overhead\\
+Args              & Hardware  & Software  & Overall  & Measured  & Remove overhead & Std\\
 \hline
-0 args & 2 & 4 & 6 & 7.1 & 2.1 \\
-1 args & 3 & 5 & 8 & 7.3  & 2.3 \\
-2 args & 4 & 6 & 10 & 7.7 & 2.7 \\
-3 args & 5 & 7 & 12 & 8.6 & 3.6 \\
-4 args & 6 & 8 & 14 & 9.3 & 4.3\\
-5 args & 7 & 9 & 16 & 10.0 & 5.0\\
-6 args & 8 & 10 & 18 & 10.9 & 5.9\\
-7 args & 9 & 11 & 20 & 13.1 & 8.1\\
+0 args & 2 & 4 & 6 & 7.1 & 2.1 & 0.16788\\
+1 args & 3 & 5 & 8 & 7.3  & 2.3 & 0.19758 \\
+2 args & 4 & 6 & 10 & 7.7 & 2.7 & 0.17281 \\
+3 args & 5 & 7 & 12 & 8.6 & 3.6 & 0. 21230  \\
+4 args & 6 & 8 & 14 & 9.3 & 4.3 & 0. 26652 \\
+5 args & 7 & 9 & 16 & 10.0 & 5.0 & 0.17272 \\
+6 args & 8 & 10 & 18 & 10.9 & 5.9 & 0.20281 \\
+7 args & 9 & 11 & 20 & 13.1 & 8.1 & 0.22101 \\
 \end{tabular}
 \end{center}
 
@@ -82,27 +82,26 @@ With the increasing of iteration time, the average cycles decrease a lot. There 
 In this part, we measure the overhead of System call. There are more than 100 systems in Mac OS and Linux like exit, fork, open and getpid. And the overhead varies a lot. For example, System call like fork will use more cycles than getpid. Because fork will creates a new process by duplicating the calling process which will use much more resources than getpid. So we aim to choose the one that use fewer CPU cycles. The minimal cost can be emulated by measuring the cost of getpid() or getppid().
 
 \paragraph{Methodology}
-Because in my operating system getpid() will cache the result, getppid() will not cache the result. So we decided to choose getppid() as our system call overhead measurement target.
+Because in my operating system getpid() will cache the result. So we use a trick here. In each iteration, we fork a child process, and call getpid() in child process and then reap this child process. So every iteration we actually call getpid() in a bread-new  process, as a result we will never call getpid() on a cached one. So we solved this problem.
 
-The method is similar to measure overhead of procedure call. We iterate about 100000 times, record the counter before the loop and record it again after the loop, then remove the iteration overhead.
+As before, we iterate about 100000 times, record the time before getpid() and after getpid(), then calculate the average cycles.
 
 \paragraph{Predictions}
-As for hardware, it may take 10 cycles to read ppid. As for software, it is hard to estimate. I have implemented system call before. The operations include save current state to memory, trap into kernel, then kernel provide service and finally restore previous state. I measure it as 200 cycles.
+As for hardware, it may take 200 cycles to deal with registers. As for software, it is hard to estimate.  I know the operations including save current state to memory, trap into kernel, then kernel provide service and finally restore previous state. I measure it about 10000 cycles.
 
 \paragraph{Results}
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-System call  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\begin{tabular}{| p{2cm} | p{3cm} | p{3cm} | p{2.5cm} | p{2.5cm} | p{2cm}}
+System call  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time  & Std \\
 \hline
-getppid() & 200 cycles& 10 cycles& 210 cycles& 297 cycles \\
-getpid() & ~ & ~ & ~ & 4 cycles \\
+getpid() & 200 cycles& 10000 cycles& 10200 cycles& 43020 cycles & 1702\\
 \end{tabular}
 \end{center}
 
 \paragraph{Discussion}
-Our estimates were lower than the measured result. That is to say, the overhead of user and kernel mode switch is more than we imagine. So, cache some system call results may be a good choice. Because some stupid system call benchmark will repeatedly call getpid ().
+Our estimates were lower than the measured result. That is to say, the overhead of user and kernel mode switch is more than we have imagined. So, caching some system call results may be a good idea. Because some stupid system call benchmark will repeatedly call getpid ().
 
 \paragraph{Question} How does it compare to the cost of a procedure call? The cost of a system call is much larger than that of a procedure call. Because a system call involves switch between user mode and kernel mode. Furthermore, kernel will provide service to the caller and sometimes will have I/O operations.
 
@@ -110,32 +109,32 @@ Our estimates were lower than the measured result. That is to say, the overhead 
 In this part, we measure task creation time, measure the time to create and run both a process and a kernel thread.
 
 \paragraph{Methodology}
-For process, we use fork() to create a new process. We iterate 500 times, under Mac OS, if we iterate 1000 times then it will report ERROR so we only iterate 500 times, each iteration we record counter before fork() and after fork() and then get the average time, later remove the iteration overhead.
+For process, we use fork() to create a new process.  Each iteration we record time before fork(). Then there is a problem : Who executes first after fork(), parent or the child? In general, nothing can be said about the relative order of their execution. So we can not record time immediately after fork(). Here is our trick : in child process, we simply exit(); But in parent process, we use wait(NULL) and then record time. So after fork(), first parent process will give CPU to child process, then child process exit and kernel give CPU to parent process again. So there are two context switches. Then we subtract the two context switch overheads and get the final results. We run there procedure many times and get the average.
 
 Things are quiet similar for kernel thread. We use pthread to create a task. Whenever we create a new thread, in the thread function we use pthread\_exit() to kill thread immediately, which will make measurement accurate.
 
 \paragraph{Predictions}
 It is difficult to predict accurately. What I am quiet sure is that creating a thread kernel is much more cheaper than creating a process. Because threads share many resources like file descriptors.
 
-For process, I measure the hardware cycles are 200, and the software is 2000.
-For thread, I measure the hardware cycles are 50, and the software is 200.
+THOMAS E. ANDERSON in 1991 report it takes 11300 microseconds to fork process and 948 microseconds to create thread. \cite{task} In 1991， the CPU frequency of Intel 80486SX is 20MHz. Based on CPU frequency at that time, which are about 200000 cycles to fork process and 20000 cycles to create thread. So I do the following predictions.
+
+For process, I guess the hardware overhead are 10000 cycles, and the software overhead is 190000 cycles.
+For thread, I guess the hardware overhead are 1000 cycles, and the software overhead is 19000 cycles.
 
 \paragraph{Results}
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-Task creation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\begin{tabular}{| p{2cm} | p{3cm} | p{3cm} | p{2.5cm} | p{2.5cm} | p{2cm} }
+Task creation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time  & Std \\
 \hline
-process & 2000 cycles& 200 cycles& 2200 cycles& 181932  cycles\\
-kernel thread    & 200 cycles& 50 cycles& 250 cycles& 16509 cycles\\
+process & 10000 cycles& 190000 cycles& 200000 cycles& 311751  cycles & 11321 \\
+kernel thread    & 1000 cycles& 19000 cycles& 20000 cycles& 16509 cycles & 827\\
 \end{tabular}
 \end{center}
 
 \paragraph{Discussion}
 First, the cost of creating a process is much more expensive than a thread as the data indicated. Because thread is a light process that share many resources so it use fewer CPU cycles.
-
-But I am shocked by the cycles to create a process and thread. I tried gcc -O3 optimisation but did not get any improvement.
 
 \paragraph{Question} How do they compare?
 The cost of creating a new process is expensive. Each process has its own address space. Even with COW, there are still many memory copy operation and other overheads. Compared with process, kernel thread can share process resources and can be used in many situations. For example, in a web server, there are many clients and it is impossible to respond to so many clients using process creation model.
