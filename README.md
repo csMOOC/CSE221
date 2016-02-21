@@ -38,9 +38,3 @@ OS Systems Measurement Project
 3. For remote file read time, run ./fs3.1.out filename & ./fs3.2.out filename.
 
 4. To measure contention, run ./fs4.1.out nprocess.
-
-## Problem
-
-1. Task creation takes too many cycles
-
-2. RAM access can not tell L1 -> L2
