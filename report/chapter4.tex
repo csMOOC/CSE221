@@ -60,23 +60,36 @@ First, we create an array of size 32 MB that is bigger than L3-cache(6MB) and ca
 To reduce the overhead, we apply loop unrolling. Compared with code that did not apply loop unrolling, the bandwidth increased  a lot.
 
 \paragraph{Predictions}
-The machine information tells us that the memory speed is about 1600MB/s. In view of some factors, we predict the speed is 1200 MB/s.
+
+I found an estimation about different RAM\cite{ramref}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=6in]{./pics/ram_ref.png}
+\caption{1}\label{RAM bandwidth}
+\end{figure}
+
+According to this article, the bandwidth of my machine should be 12800 MB/s. Besides, based on my hardware : 1600MHz RAM, it is should be 12800 MB/s.
 
 \paragraph{Results}
 We present our measure results.
 
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Operation             & Predicted Speed & Measured Speed  \\
+Operation             & Predicted Speed & Measured Speed & Std \\
 \hline
-READ & 1200MB/s & 1226MB/s \\
-WRITE & 1200MB/s & 1520MB/s \\
+READ & 12800MB/s & 8754MB/s & 99.49 \\
+WRITE & 12800MB/s & 6902MB/s & 92.45\\
 
 \end{tabular}
 \end{center}
 
 \paragraph{Discussion}
-The actual statistics is very close to our measured results, because we choose well-designed methodology that not only eliminate the effects of cache line prefetching but also use loop unrolling to reduce iteration overhead. That's why we choose 32MB array. Because an array of this size can not be put in cache totally and we can access array to make cache miss.
+The prediction is a little higher than our measured results. 
+
+Our method has eliminated the effects of cache line prefetching and use loop unrolling to reduce iteration overhead. That's why we choose 32MB array. Because an array of this size can not be put in cache totally and we can access array to make cache miss.
+
+One of the drawback of our method is that we access each element of small size, which may include some overhead. If I have a big struct or class, maybe we can get higher results. 
 
 \section{Page fault service time}
 In this part, we report the time for faulting an entire page from disk.

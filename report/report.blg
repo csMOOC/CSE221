@@ -3,63 +3,55 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
-A level-1 auxiliary file: chapter3.aux
 A level-1 auxiliary file: chapter4.aux
 The style file: alpha.bst
 A level-1 auxiliary file: appendix1.aux
 Database file #1: refs.bib
-Name 1 in "THOMAS E. ANDERSON, BRIAN N. BERSHAD, EDWARD D. LAZOWSKA, and HENRY M. LEVY" has a comma at the end for entry task
-while executing---line 1185 of file alpha.bst
-Name 1 in "THOMAS E. ANDERSON, BRIAN N. BERSHAD, EDWARD D. LAZOWSKA, and HENRY M. LEVY" has a comma at the end for entry task
-while executing---line 1185 of file alpha.bst
 Name 1 in "Abraham Silberschatz, Greg Gagne, and Peter Baer Galvin" has a comma at the end for entry page
 while executing---line 1185 of file alpha.bst
 Name 1 in "Abraham Silberschatz, Greg Gagne, and Peter Baer Galvin" has a comma at the end for entry page
 while executing---line 1185 of file alpha.bst
 Name 1 in "Abraham Silberschatz, Greg Gagne, and Peter Baer Galvin" has a comma at the end for entry page
 while executing---line 1250 of file alpha.bst
-Warning--empty publisher in rdtsc
-Name 1 in "THOMAS E. ANDERSON, BRIAN N. BERSHAD, EDWARD D. LAZOWSKA, and HENRY M. LEVY" has a comma at the end for entry task
-while executing---line 1250 of file alpha.bst
-You've used 4 entries,
+You've used 3 entries,
             2543 wiz_defined-function locations,
-            581 strings with 4968 characters,
-and the built_in function-call counts, 1273 in all, are:
-= -- 109
-> -- 65
+            576 strings with 4872 characters,
+and the built_in function-call counts, 947 in all, are:
+= -- 84
+> -- 46
 < -- 1
-+ -- 20
-- -- 20
-* -- 74
-:= -- 227
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 19
-chr.to.int$ -- 4
-cite$ -- 5
-duplicate$ -- 61
-empty$ -- 101
-format.name$ -- 25
-if$ -- 254
++ -- 14
+- -- 14
+* -- 51
+:= -- 170
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 15
+chr.to.int$ -- 3
+cite$ -- 3
+duplicate$ -- 41
+empty$ -- 76
+format.name$ -- 18
+if$ -- 191
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 8
-newline$ -- 23
-num.names$ -- 12
-pop$ -- 37
+missing$ -- 4
+newline$ -- 18
+num.names$ -- 9
+pop$ -- 27
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 20
 quote$ -- 0
-skip$ -- 47
+skip$ -- 35
 stack$ -- 0
-substring$ -- 28
-swap$ -- 4
+substring$ -- 21
+swap$ -- 3
 text.length$ -- 1
 text.prefix$ -- 1
 top$ -- 0
 type$ -- 16
-warning$ -- 1
-while$ -- 11
+warning$ -- 0
+while$ -- 8
 width$ -- 5
-write$ -- 49
-(There were 6 error messages)
+write$ -- 38
+(There were 3 error messages)

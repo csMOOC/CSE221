@@ -1,24 +1,20 @@
-\begin{thebibliography}{TEAL91}
+\begin{thebibliography}{DEN15}
 
 \bibitem[ASG83]{page}
 Greg~Gagne Abraham~Silberschatz and Peter~Baer Galvin.
 \newblock {\em Operating System Concepts}.
 \newblock Wiley Global Education, 1983.
 
-\bibitem[kaz05]{rdtsc}
-kazutomo.
-\newblock {\em http://www.mcs.anl.gov/\~kazutomo/rdtsc.h}.
-\newblock 2005.
+\bibitem[DEN15]{ramref}
+FRANK DENNEMAN.
+\newblock Memory deep dive: Memory subsystem bandwidth.
+\newblock
+  \url{http://frankdenneman.nl/2015/02/19/memory-deep-dive-memory-subsystem-bandwidth/},
+  2015.
 
 \bibitem[MS96]{ramacc}
 Larry McVoy and Carl Staelin.
 \newblock {\em lmbench: Portable Tools for Performance Analysis}.
 \newblock Proc. of USENIX Annual Technical Conference, 1996.
-
-\bibitem[TEAL91]{task}
-EDWARD D.~LAZOWSKA THOMAS E.~ANDERSON, BRIAN N.~BERSHAD and HENRY~M. LEVY.
-\newblock {\em Scheduler Activations: Effective Kernel Support for the
-  User-Level Management of Parallelism}.
-\newblock SOSP, 1991.
 
 \end{thebibliography}
