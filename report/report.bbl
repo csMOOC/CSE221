@@ -1,4 +1,4 @@
-\begin{thebibliography}{DEN15}
+\begin{thebibliography}{TEAL91}
 
 \bibitem[ASG83]{page}
 Greg~Gagne Abraham~Silberschatz and Peter~Baer Galvin.
@@ -12,9 +12,27 @@ FRANK DENNEMAN.
   \url{http://frankdenneman.nl/2015/02/19/memory-deep-dive-memory-subsystem-bandwidth/},
   2015.
 
+\bibitem[kaz05]{rdtsc}
+kazutomo.
+\newblock {\em http://www.mcs.anl.gov/\~kazutomo/rdtsc.h}.
+\newblock 2005.
+
 \bibitem[MS96]{ramacc}
 Larry McVoy and Carl Staelin.
 \newblock {\em lmbench: Portable Tools for Performance Analysis}.
 \newblock Proc. of USENIX Annual Technical Conference, 1996.
+
+\bibitem[TEAL91]{task}
+EDWARD D.~LAZOWSKA THOMAS E.~ANDERSON, BRIAN N.~BERSHAD and HENRY~M. LEVY.
+\newblock {\em Scheduler Activations: Effective Kernel Support for the
+  User-Level Management of Parallelism}.
+\newblock SOSP, 1991.
+
+\bibitem[UNK11]{ramdata}
+UNKNOWN.
+\newblock Sisoft sandra 2011 sp5 cache ram katencies.
+\newblock
+  \url{https://www.google.com/search?q=L1,+L2,+L3+cache+speed&espv=2&biw=1440&bih=761&source=lnms&tbm=isch&sa=X&ved=0ahUKEwif4fWD64zLAhUC22MKHbcsBqIQ_AUIBigB&dpr=2#imgrc=D_4iUQ2e2u_73M%3A},
+  2011.
 
 \end{thebibliography}

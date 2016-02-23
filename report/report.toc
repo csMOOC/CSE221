@@ -9,22 +9,52 @@
 \contentsline {section}{\numberline {2.4}Disk}{5}
 \contentsline {section}{\numberline {2.5}Network Card}{5}
 \contentsline {section}{\numberline {2.6}Operating Systems}{6}
-\contentsline {chapter}{\numberline {3}Memory}{7}
-\contentsline {section}{\numberline {3.1}RAM access time}{7}
+\contentsline {chapter}{\numberline {3}CPU, Scheduling, and OS Services}{7}
+\contentsline {section}{\numberline {3.1}Measurement overhead}{7}
 \contentsline {paragraph}{Methodology}{7}
 \contentsline {paragraph}{Predictions}{7}
-\contentsline {paragraph}{Results}{7}
+\contentsline {paragraph}{Results}{8}
 \contentsline {paragraph}{Discussion}{8}
-\contentsline {section}{\numberline {3.2}RAM bandwidth}{8}
-\contentsline {paragraph}{Methodology}{9}
-\contentsline {paragraph}{Predictions}{9}
+\contentsline {section}{\numberline {3.2}Procedure call overhead}{8}
+\contentsline {paragraph}{Methodology}{8}
+\contentsline {paragraph}{Predictions}{8}
 \contentsline {paragraph}{Results}{9}
 \contentsline {paragraph}{Discussion}{9}
-\contentsline {section}{\numberline {3.3}Page fault service time}{10}
+\contentsline {paragraph}{Question}{10}
+\contentsline {section}{\numberline {3.3}System call overhead}{10}
 \contentsline {paragraph}{Methodology}{10}
 \contentsline {paragraph}{Predictions}{10}
-\contentsline {paragraph}{Results}{10}
-\contentsline {paragraph}{Discussion}{10}
+\contentsline {paragraph}{Results}{11}
+\contentsline {paragraph}{Discussion}{11}
 \contentsline {paragraph}{Question}{11}
-\contentsline {chapter}{\numberline {}Bibliography}{12}
-\contentsline {chapter}{\numberline {4}Summary}{13}
+\contentsline {section}{\numberline {3.4}Task creation time}{11}
+\contentsline {paragraph}{Methodology}{11}
+\contentsline {paragraph}{Predictions}{12}
+\contentsline {paragraph}{Results}{12}
+\contentsline {paragraph}{Discussion}{12}
+\contentsline {paragraph}{Question}{12}
+\contentsline {section}{\numberline {3.5}Context switch time}{12}
+\contentsline {paragraph}{Methodology}{13}
+\contentsline {paragraph}{Predictions}{13}
+\contentsline {paragraph}{Results}{13}
+\contentsline {paragraph}{Discussion}{13}
+\contentsline {paragraph}{Question}{14}
+\contentsline {chapter}{\numberline {4}Memory}{15}
+\contentsline {section}{\numberline {4.1}RAM access time}{15}
+\contentsline {paragraph}{Methodology}{15}
+\contentsline {paragraph}{Predictions}{16}
+\contentsline {paragraph}{Results}{16}
+\contentsline {paragraph}{Discussion}{17}
+\contentsline {section}{\numberline {4.2}RAM bandwidth}{17}
+\contentsline {paragraph}{Methodology}{17}
+\contentsline {paragraph}{Predictions}{18}
+\contentsline {paragraph}{Results}{18}
+\contentsline {paragraph}{Discussion}{18}
+\contentsline {section}{\numberline {4.3}Page fault service time}{18}
+\contentsline {paragraph}{Methodology}{19}
+\contentsline {paragraph}{Predictions}{19}
+\contentsline {paragraph}{Results}{19}
+\contentsline {paragraph}{Discussion}{19}
+\contentsline {paragraph}{Question}{20}
+\contentsline {chapter}{\numberline {5}Summary}{21}
+\contentsline {chapter}{\numberline {}Bibliography}{22}

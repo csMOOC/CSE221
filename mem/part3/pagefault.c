@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     map[9*4096] = 0;
     
     end = rdtsc();
-    printf("page fault per byte : %llu\n", (end - start)/FILESIZE);
+    printf("page fault per byte : %f\n", (end - start)*1.0/FILESIZE);
     
     /* Don't forget to free the mmapped memory
      */

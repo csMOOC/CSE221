@@ -9,38 +9,47 @@ To test memory access latency, I first followed the procedure described in the l
 Then I did not use normal array access, like A[i]. Because it may have other overheads. For example, the compiler may first calculate the address then access the element. Instead we use pointer access and store the next pointer in current variable. So we allocate an array of pointer of int, and each store the next element address.
 
 \paragraph{Predictions}
-Different level caches and main memory have different access cycles.
 
-For L1-cache, we predict hardware cycles are 5 and software 2;
-For L2-cache, we predict hardware cycles are 10 and software 4;
-For L3-cache, we predict hardware cycles are 15 and software 6;
-For main memory, we predict hardware cycles are 30 and software 10;
+\pagebreak
+
+\begin {figure}
+\centering
+\includegraphics[width=6in]{./pics/Sandra-Latency.png}
+\caption{RAM access speed reference}\label{RAM access speed reference}
+\end{figure}
+
+From Figure 4.1, we can see that different level caches and main memory have different speed.  Based on i7-2600k data, we made some improvement on this data and made following predictions : 
+
+For L1-cache, we predict hardware overhead are 5 cycles and software 2 cycles;
+For L2-cache, we predict hardware overhead are 10 cycles and software 4 cycles;
+For L3-cache, we predict hardware overhead are 15 cycles and software 6 cycles;
+For main memory, we predict hardware overhead are 90 cycles and software 60 cycles;
 
 \paragraph{Results}
 We present our measure results.
-
-\begin{center}
-\begin{tabular}{| p{1.5cm} | p{2cm} | p{2cm} | p{2cm} | p{2.5cm} | p{3cm} |}
-TYPE             & Hardware  & Software  & Overall  & Measured  & Remove Overhead \\
-\hline
-
-L1	&   5 cycles  & 2 cycles & 7 cycles  &  7.5  cycles &  4.5 cycles \\
-L2    &   10 cycles & 4 cycles & 14 cycles & 11.2 cycles &  8.2 cycles \\
-L3 	&   15 cycles & 6 cycles & 21 cycles &  24.2 cycles & 21.2 cycles \\
-Memory & 30 cycles & 10 cycles & 40 cycles & 200.3 cycles & 197.3 cycles \\
-\end{tabular}
-\end{center}
-
 
 \begin {figure}
 \centering
 \includegraphics[width=2.6in]{./pics/ram1.png}
 \includegraphics[width=2.6in]{./pics/ram2.png}
-\caption{1，2}\label{RAM access}
+\caption{RAM access result}\label{RAM access}
 \end{figure}
 
+\begin{center}
+\begin{tabular}{| p{1.5cm} | p{2cm} | p{2cm} | p{2cm} | p{2.5cm} | p{3cm} | p{2cm}}
+TYPE             & Hardware  & Software  & Overall  & Measured  & Remove Overhead & Std\\
+\hline
+
+L1	&   5 cycles  & 2 cycles & 7 cycles  &  7.5  cycles &  4.5 cycles & 0.1212\\
+L2    &   10 cycles & 4 cycles & 14 cycles & 11.2 cycles &  8.2 cycles & 0.2059\\
+L3 	&   15 cycles & 6 cycles & 21 cycles &  24.2 cycles & 21.2 cycles & 0.4529\\
+Memory & 90 cycles & 60 cycles & 150 cycles & 200.3 cycles & 197.3 cycles & 6.2800\\
+\end{tabular}
+\end{center}
 
 \paragraph{Discussion}
+Our prediction is very close to the measured result, it is due to the i7-2600k data. The data is very accurate, so we made good predictions on top of this data.
+
 It is easy to see the transition from L3-cache to main memory, it is very steep in the picture from array size 22 to 23. Because my L3-cache is 6MB, so it is between 22 and 23.
 
 We can also see the transitions from L2-cache to L3-cache. In the picture exactly in 18, the access time increase. Because my L2-cache is 256KB, which is equal to 18 in the picture.
@@ -66,7 +75,7 @@ I found an estimation about different RAM\cite{ramref}.
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=6in]{./pics/ram_ref.png}
-\caption{1}\label{RAM bandwidth}
+\caption{RAM bandwidth}\label{RAM bandwidth}
 \end{figure}
 
 According to this article, the bandwidth of my machine should be 12800 MB/s. Besides, based on my hardware : 1600MHz RAM, it is should be 12800 MB/s.
@@ -106,10 +115,10 @@ Because my page size is 4 KB, every page fault will loading 4 KB data from disk 
 We present our measure results.
 
 \begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\begin{tabular}{| p{2cm} | p{3cm} | p{3cm} | p{2.5cm} | p{2.5cm} | p{2cm} }
+Operation  & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time  & Std \\
 \hline
-Page Fault Service Time & 8192 cycles& 8000 cycles& 16192 cycles& 9898 cycles\\
+Page Fault Service Time & 8192 cycles& 8000 cycles& 16192 cycles& 8528 cycles & 11.33405\\
 
 \end{tabular}
 \end{center}
