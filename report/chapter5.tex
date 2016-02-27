@@ -1,31 +1,20 @@
 \chapter{Network}
+In this chapter, the two machines are in the same LAN, with network speed about 1Mb/s.
 
 \section{Round trip time}
-In this part, we try to calculate the round trip time.
+In this part, we try to measure the round trip time.
 
 \paragraph{Methodology}
-The method is very simple, it's just like an echo server. Client send one byte to server, when server received the message then send back the message, and client receive it. Before client send message, we record current cycle; After client receive message, we record again. We iterate this procedure for 1000 times and get the average.
+Our method is very simple, it's just like an echo server. Client send one byte to server, when server received the message then send back the message, then client receive it;
+Before client send message, we record current cycle time; After client receive message, we record it again. We iterate this procedure for 1000 times and get the average result.
 
-When iterating 1000 times and use the same opened connection. We did not use different connection, because it will add many TCP ACK overhead for connection. This experiment is only for RTT. The connection overhead will be measured in the following experiments.
 
 \paragraph{Predictions}
 Our predictions exclude the factor of building connection. So for loopback and remote interface, the biggest difference is send and receive data.
+For Ping program, we know that it use ICMP packet so it will get more accurate results.
+Because Ping exclude the extra time a packet reside in another machine, it will use time timestamp in ICMP packet to calculate time.
 
-For loopback interface. We measure the hardware cycles are 20000, software cycles are 5000.
-
-For remote interface. We measure the hardware cycles are 100000, software cycles are 10000.
-
-\paragraph{Results}
-We present our measured results.
-
-\begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-Operation   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
-\hline
-Loopback RTT & 20000 cycles& 5000 cycles& 25000 cycles& 69882 cycles\\
-Remote RTT & 100000 cycles& 10000 cycles& 110000 cycles& 627772 cycles\\
-\end{tabular}
-\end{center}
+Following is the Ping result.
 
 Following is the Ping results.
 \begin{center}
@@ -37,19 +26,39 @@ remote & 0.196ms &  450800 cycles\\
 \end{tabular}
 \end{center}
 
-\paragraph{Discussion}
-The overhead of network communication is exceeding our predictions. Even the loopback interface is over 60000 cycles for only 1 byte transfer. \\
+Based on Ping results, we made our predictions.
 
+For loopback interface. We measure the hardware cycles are 20000, software cycles are 100000.
+
+For remote interface. We measure the hardware cycles are 50000, software cycles are 500000.
+
+\paragraph{Results}
+We present our measured results.
+
+\begin{center}
+\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
+Operation   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\hline
+Loopback RTT & 20000 cycles& 100000 cycles& 120000 cycles& 69882 cycles\\
+Remote RTT & 50000 cycles& 500000 cycles& 550000 cycles& 627772 cycles\\
+\end{tabular}
+\end{center}
+
+\paragraph{Discussion}
+The overhead of network communication is exceeding our predictions. Even the loopback interface is over 60000 cycles for only 1 byte transfer.
+Because TCP/IP protocal is implemented in kernel, so even the loopback results are \\
 
 What can you deduce about baseline network performance and the overhead of OS software?  \\
 In this experiment we only transfer 1 byte data. In the next experiment, we will go deep into the network performance and the overhead of OS software. Because bandwidth benchmark will reveal more about this.
 
-How close to ideal hardware performance do you achieve? \\ 
-It is far short of the ideal hardware performance because of the TCP/IP protocol.\\
+How close to ideal hardware performance do you achieve? \\
+It is far short of the ideal hardware performance because of the TCP/IP overhead.\\
 
 
 What are reasons why the TCP performance does not match ideal hardware performance?  \\
-It is expensive to establish TCP reliable connection, much time on handshake, including ACK packages and SYN packages.
+First of all, normal TCP/IP protocols are implemented in kernel, so it is time-consuming to do context switch;
+Secondly, We know there are many network stacks, from link layer to TCP/IP stacks;
+Moreover, it is expensive to establish TCP connection, which will spend much time on handshake(like ACKs) to make sure the connection is reliable.
 
 \section{Peak bandwidth}
 In this part, we try to explore peak bandwidth.
@@ -62,7 +71,7 @@ In this experiment, when we establish the connection, the server will send some 
 Besides, we repeat our procedure more than 10 times and choose the maximum result as peak bandwidth.
 
 \paragraph{Predictions}
-According to the memory bandwidth provided by hardware information, we think the peak bandwidth of loopback interface is 1600MB/s. 
+According to the memory bandwidth provided by hardware information, we think the peak bandwidth of loopback interface is 1600MB/s.
 
 Because the network bandwidth is 1000Mb/s, which is about 125 MB/s. We predict the remote interface is 125MB/s.
 
@@ -84,7 +93,7 @@ Our predictions are very close to the measured results. For loopback interface, 
 
 We also think the bandwidth can be influenced by many factors. For example, if the two machine are far from each other, then the route path is undecidable and the bandwidth will be influenced. \\
 
-How close to ideal hardware performance do you achieve? \\ 
+How close to ideal hardware performance do you achieve? \\
 It is close to the hardware performance due to the perfect experiment environment.
 
 \section{Connection overhead}
@@ -94,7 +103,7 @@ In this part, we try to explore connection overhead.
 We measure connection setup cycle at client side and connection tear-down cycle at server side.
 
 \paragraph{Predictions}
-First, we think it is more expensive to setup the connection than tear down. Because we use handshake protocal to setup the connection. 
+First, we think it is more expensive to setup the connection than tear down. Because we use handshake protocal to setup the connection.
 
 Based on previous experience on RTT experiment, we made following predictions.
 
