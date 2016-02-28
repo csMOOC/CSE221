@@ -124,7 +124,7 @@ Page Fault Service Time & 8192 cycles& 8000 cycles& 16192 cycles& 8528 cycles & 
 \end{center}
 
 \paragraph{Discussion}
-Our estimation is a little higher than the measured result. Maybe today the hardware is much faster or the linux kernel serve page fault faster than that time.
+Our estimation is a little higher than the measured result. Maybe today  the linux kernel serve page fault faster than that time or the hardware is much faster. For example, it is much faster to read a page via SSD than HDD.
 
 Whenever the cpu detects a page-fault, its action depends on Current Privilege Level. If  CPL == 3  (executing in user mode)
 the CPU will switch to its kernel-mode stack:

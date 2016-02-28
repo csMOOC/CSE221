@@ -1,5 +1,5 @@
 \chapter{Network}
-In this chapter, the two machines are in the same LAN, with network speed about 1Mb/s.
+In this chapter, the two machines are in the same LAN, with network speed about 1000Mb/s.
 
 \section{Round trip time}
 In this part, we try to measure the round trip time.
@@ -15,11 +15,9 @@ For Ping program, we know that it use ICMP packet so it will get more accurate r
 Because Ping exclude the extra time a packet reside in another machine, it will use time timestamp in ICMP packet to calculate time.
 
 Following is the Ping result.
-
-Following is the Ping results.
 \begin{center}
 \begin{tabular}{l*{6}{c}r}
-Operation       &  RTT & Corresponding Cycles\\
+Operation       &  RTT \\
 \hline
 loopback & 0.070ms & 161000 cycles\\
 remote & 0.196ms &  450800 cycles\\
@@ -28,28 +26,28 @@ remote & 0.196ms &  450800 cycles\\
 
 Based on Ping results, we made our predictions.
 
-For loopback interface. We measure the hardware cycles are 20000, software cycles are 100000.
+For loopback interface. We measure the hardware overhead is 0.01ms, software overhead is 0.05ms.
 
-For remote interface. We measure the hardware cycles are 50000, software cycles are 500000.
+For remote interface. We measure the hardware overhead is 0.05ms, software overhead is 0.2ms..
 
 \paragraph{Results}
 We present our measured results.
 
 \begin{center}
-\begin{tabular}{| p{3cm} | p{3cm} | p{3cm} | p{3cm} | p{3cm} |}
-Operation   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time   \\
+\begin{tabular}{| p{2cm} | p{3cm} | p{3cm} | p{2.5cm} | p{2.5cm} | p{2cm}}
+Operation   & Base Hardware Performance  & Estimated Software Overhead  & Predicted Time  & Measured Time  & Std \\
 \hline
-Loopback RTT & 20000 cycles& 100000 cycles& 120000 cycles& 69882 cycles\\
-Remote RTT & 50000 cycles& 500000 cycles& 550000 cycles& 627772 cycles\\
+Loopback  & 0.01 ms& 0.05 ms& 0.06 ms & 0.03ms & 0.00725ms \\
+Remote  & 0.05 ms& 0.2 ms & 0.25 ms & 0.27ms & 0.05ms \\ 
 \end{tabular}
 \end{center}
 
 \paragraph{Discussion}
-The overhead of network communication is exceeding our predictions. Even the loopback interface is over 60000 cycles for only 1 byte transfer.
+The overhead of network communication is large.
 Because TCP/IP protocal is implemented in kernel, so even the loopback results are \\
 
 What can you deduce about baseline network performance and the overhead of OS software?  \\
-In this experiment we only transfer 1 byte data. In the next experiment, we will go deep into the network performance and the overhead of OS software. Because bandwidth benchmark will reveal more about this.
+In this experiment we only transfer 1 byte data. In the next experiment, we will go deep into the network performance and the overhead of OS software. Because bandwidth benchmark will reveal more about this. \\
 
 How close to ideal hardware performance do you achieve? \\
 It is far short of the ideal hardware performance because of the TCP/IP overhead.\\
@@ -66,14 +64,14 @@ In this part, we try to explore peak bandwidth.
 \paragraph{Methodology}
 The code is very similar to the previous experiment.
 
-In this experiment, when we establish the connection, the server will send some data to the client and the client will receive this chunk of data. The size of data is a parameter. We use several sizes like 1000000 bytes, the result is pretty similar.
+In this experiment, when we establish the connection, the server will send some data to the client and the client will receive this chunk of data. The size of data is a parameter. We have tried use different chunk sizes,  like 1MB date. The result is pretty similar. We add MSG\_WAITALL flag to recv() function. Because recv will immediately return if it detect there are some data in the buffer. So we add this flag to let recv() return if and only if it has received all the data.
 
-Besides, we repeat our procedure more than 10 times and choose the maximum result as peak bandwidth.
+We repeat this procedure 100 times and choose the maximum result as our peak bandwidth.
 
 \paragraph{Predictions}
-According to the memory bandwidth provided by hardware information, we think the peak bandwidth of loopback interface is 1600MB/s.
+It is 
 
-Because the network bandwidth is 1000Mb/s, which is about 125 MB/s. We predict the remote interface is 125MB/s.
+Because the network bandwidth is 1000Mb/s, which is about 125 MB/s. We predict the remote interface is approximately 125MB/s.
 
 \paragraph{Results}
 We present our measured results.
