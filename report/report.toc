@@ -72,5 +72,27 @@
 \contentsline {paragraph}{Predictions}{25}
 \contentsline {paragraph}{Results}{25}
 \contentsline {paragraph}{Discussion}{25}
-\contentsline {chapter}{\numberline {6}Summary}{26}
-\contentsline {chapter}{\numberline {}Bibliography}{28}
+\contentsline {chapter}{\numberline {6}File System}{26}
+\contentsline {section}{\numberline {6.1}Size of file cache}{26}
+\contentsline {paragraph}{Methodology}{26}
+\contentsline {paragraph}{Predictions}{26}
+\contentsline {paragraph}{Results}{26}
+\contentsline {paragraph}{Discussion}{27}
+\contentsline {section}{\numberline {6.2}File read time}{28}
+\contentsline {paragraph}{Methodology}{28}
+\contentsline {paragraph}{Predictions}{28}
+\contentsline {paragraph}{Results}{28}
+\contentsline {paragraph}{Discussion}{31}
+\contentsline {section}{\numberline {6.3}Remote file read time}{31}
+\contentsline {paragraph}{Methodology}{31}
+\contentsline {paragraph}{Predictions}{31}
+\contentsline {paragraph}{Results}{31}
+\contentsline {paragraph}{Discussion}{33}
+\contentsline {paragraph}{Question}{33}
+\contentsline {section}{\numberline {6.4}Contention}{34}
+\contentsline {paragraph}{Methodology}{34}
+\contentsline {paragraph}{Predictions}{34}
+\contentsline {paragraph}{Results}{34}
+\contentsline {paragraph}{Discussion}{35}
+\contentsline {chapter}{\numberline {7}Summary}{37}
+\contentsline {chapter}{\numberline {}Bibliography}{39}
