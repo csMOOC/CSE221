@@ -44,13 +44,24 @@ int main(int argc , char *argv[])
     unsigned long long start,end,diff;
 
     start = rdtsc();
-    recv(sockfd, &msg, size, MSG_WAITALL);
+    int n = 0;
+    int i = 0;
+
+    for(;i < 10;i++) {
+        n = send(sockfd, msg, size, 0);
+    }
+    if(n < 0) {
+        perror("send failed");
+        return -1;
+    }
+    
     end = rdtsc();
+    printf ("send : %d\n", n);
     diff = end - start;
 
     close(sockfd);
 
-    printf ("PEAK bandwidth is : %f MB/s \n", (size/(1024*1.0*1024)) * (2.3e8 / diff) );
+    printf ("PEAK bandwidth is : %f MB/s \n", 10*(size/(1024*1.0*1024)) * (2.3e9 / diff) );
     
 	return 0;
 }

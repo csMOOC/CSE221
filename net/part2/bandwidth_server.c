@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <sys/socket.h> 
 #include <netinet/in.h>
+#include "rdtsc.h"
 
 int main(int argc , char *argv[])
 {
@@ -45,8 +46,8 @@ int main(int argc , char *argv[])
     //Accept incoming connection
     puts("Waiting   ...  \n");
 
-    char *msg=(char*)malloc(size);
-    memset (msg, 0, size);
+    char *msg=(char*)malloc(size+1);
+    memset (msg, 80, size+1);
 
     //accept connection from an incoming client
     while(1)
@@ -57,10 +58,23 @@ int main(int argc , char *argv[])
             perror("Error: fails to accept");
             return -1;
     	}
-
-        send(client_sock, &msg, size, 0);
+        unsigned long long start,end,diff;
+        int i = 0;
+        int n = 0;
+        start = rdtsc();
+        
+        for(;i < 10;i++) {
+            n = recv(client_sock, msg, size, MSG_WAITALL);
+        }
+        
+        end = rdtsc();
+        printf ("receive : %d\n", n);
+        diff = end - start;
+        
+        printf ("PEAK bandwidth is : %f MB/s \n", 10*(size/(1024*1.0*1024)) * (2.3e9 / diff) );
         
         close(client_sock);
+        return 0;
     }
     
     close(server_sock);
