@@ -62,7 +62,7 @@
 \contentsline {paragraph}{Predictions}{22}
 \contentsline {paragraph}{Results}{23}
 \contentsline {paragraph}{Discussion}{23}
-\contentsline {section}{\numberline {5.2}Peak bandwidth}{23}
+\contentsline {section}{\numberline {5.2}Peak bandwidth}{24}
 \contentsline {paragraph}{Methodology}{24}
 \contentsline {paragraph}{Predictions}{24}
 \contentsline {paragraph}{Results}{24}

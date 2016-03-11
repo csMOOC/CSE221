@@ -42,10 +42,12 @@ Remote  & 0.2 ms& 0.05 ms & 0.25 ms & 0.27ms & 0.05ms \\
 \end{center}
 
 \paragraph{Discussion}
-The overhead of network communication is large. Because TCP/IP protocol is implemented in kernel, so even the loopback results are a little slow for RTT. One weird thing is that for loopback interface, ICMP protocol is slower than TCP/IP protocol. Maybe there are some jitter.
+The overhead of network communication is large. Because TCP/IP protocol is implemented in kernel, so even the loopback results are a little slow for RTT. 
+
+One weird thing is that for loopback interface, ICMP protocol is slower than TCP/IP protocol. It is weird that RTT measured by ICMP is longer than that measured by TCP/IP. One possible reason is that Ping program may did not use RDTSC instruction to measure time, losing some precision. \\
 
 What can you deduce about baseline network performance and the overhead of OS software?  \\
-In this experiment we only transfer 1 byte data. In the next experiment, we will go deep into the network performance and the overhead of OS software. Because bandwidth benchmark will reveal more about this. \\
+In this experiment we only transfer several bytes of data. In the next experiment, we will go deep into the network performance and the overhead of OS software. Because bandwidth benchmark will reveal more about this. \\
 
 How close to ideal hardware performance do you achieve? \\
 It is far short of the ideal hardware performance because of the TCP/IP overhead.\\
