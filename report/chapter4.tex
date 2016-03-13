@@ -18,7 +18,7 @@ Then I did not use normal array access, like A[i]. Because it may have other ove
 \caption{RAM access speed reference}\label{RAM access speed reference}
 \end{figure}
 
-From Figure 4.1, we can see that different level caches and main memory have different speed.  Based on i7-2600k data, we made some improvement on this data and made following predictions : 
+From Figure 4.1, we can see that different level caches and main memory have different speed.  Based on i7-2600k data, we made 20\% - 30\% improvement on this data and made following predictions : 
 
 For L1-cache, we predict hardware overhead are 5 cycles and software 2 cycles;
 For L2-cache, we predict hardware overhead are 10 cycles and software 4 cycles;
@@ -64,9 +64,9 @@ We can also see that within cache, the RAM access time cycles are very small com
 In this part, we report bandwidth for both reading and writing.
 
 \paragraph{Methodology}
-First, we create an array of size 32 MB that is bigger than L3-cache(6MB) and can be put into memory. In order to reduce the effects of cache line prefetching, we access array as follow : $0 -> HALF\_SIZE -> 1 -> HALF\_SIZE+1 -> ... -> ...$. So we can make sure that each access will cache miss and get from main memory.
+First, we create an array of size 32 MB that is bigger than L3-cache(6MB) and can be put into memory. In order to reduce the effects of cache line prefetching, we access array as follow : $0 -> HALF\_SIZE -> 1 -> HALF\_SIZE+1 -> ... -> ...$.  But this method can not totally remove the effect of cache line prefetching, because other cache line may cache different parts of the array.
 
-To reduce the overhead, we apply loop unrolling. Compared with code that did not apply loop unrolling, the bandwidth increased  a lot.
+To further reduce the overhead, we apply loop unrolling. Compared with code that did not apply loop unrolling, the bandwidth increased  a lot.
 
 \paragraph{Predictions}
 
@@ -78,7 +78,7 @@ I found an estimation about different RAM\cite{ramref}.
 \caption{RAM bandwidth}\label{RAM bandwidth}
 \end{figure}
 
-According to this article, the bandwidth of my machine should be 12800 MB/s. Besides, based on my hardware : 1600MHz RAM, it is should be 12800 MB/s.
+According to this article and my memory : 1600 MHz DDR3. the bandwidth of my machine should be 12800 MB/s. 
 
 \paragraph{Results}
 We present our measure results.
@@ -99,6 +99,8 @@ The prediction is a little higher than our measured results.
 Our method has eliminated the effects of cache line prefetching and use loop unrolling to reduce iteration overhead. That's why we choose 32MB array. Because an array of this size can not be put in cache totally and we can access array to make cache miss.
 
 One of the drawback of our method is that we access each element of small size, which may include some overhead. If I have a big struct or class, maybe we can get higher results. 
+
+And write speed is less than read speed, I think it is due to the read prefetching. Because different cache line may cache different parts of my array.
 
 \section{Page fault service time}
 In this part, we report the time for faulting an entire page from disk.

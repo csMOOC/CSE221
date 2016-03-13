@@ -50,7 +50,7 @@
 \contentsline {paragraph}{Predictions}{19}
 \contentsline {paragraph}{Results}{19}
 \contentsline {paragraph}{Discussion}{19}
-\contentsline {section}{\numberline {4.3}Page fault service time}{19}
+\contentsline {section}{\numberline {4.3}Page fault service time}{20}
 \contentsline {paragraph}{Methodology}{20}
 \contentsline {paragraph}{Predictions}{20}
 \contentsline {paragraph}{Results}{20}
